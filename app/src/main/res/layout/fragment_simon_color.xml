@@ -51,7 +51,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/score"
+        android:id="@+id/tvScore"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:autoSizeTextType="uniform"
@@ -72,6 +72,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score" />
+        app:layout_constraintTop_toBottomOf="@+id/tvScore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

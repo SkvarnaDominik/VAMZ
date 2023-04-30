@@ -30,6 +30,9 @@
         android:label="fragment_simon_color"
         tools:layout="@layout/fragment_simon_color" >
         <action
+            android:id="@+id/action_simonColorFragment_to_gameOverviewFragment"
+            app:destination="@id/gameOverviewFragment" />
+        <action
             android:id="@+id/action_simonColorFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
@@ -59,6 +62,9 @@
         android:name="com.example.semestralnapraca_skvarna.fragment.TextColorFragment"
         android:label="TextColorFragment" >
         <action
+            android:id="@+id/action_textColorFragment_to_gameOverviewFragment"
+            app:destination="@id/gameOverviewFragment" />
+        <action
             android:id="@+id/action_textColorFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
@@ -85,6 +91,15 @@
         tools:layout="@layout/fragment_score" >
         <action
             android:id="@+id/action_scoreFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverviewFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.gameOverviewFragment"
+        android:label="fragment_game_overview"
+        tools:layout="@layout/fragment_game_overview" >
+        <action
+            android:id="@+id/action_gameOverviewFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
 </navigation>

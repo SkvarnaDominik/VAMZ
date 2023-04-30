@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorBinding
 import com.example.semestralnapraca_skvarna.view_model.SimonColorViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,6 +23,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
 
     private lateinit var viewModel: SimonColorViewModel
 
+    val coroutineScope = CoroutineScope(Dispatchers.IO)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,61 +39,39 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        game()
+        setOnClickBtnSimonYellow()
+        setOnClickBtnSimonBlue()
+        setOnClickBtnSimonRed()
+        setOnClickBtnSimonGreen()
         setOnClickBackToMenu()
-        //displaySequence()
-    }
 
-    private fun game() {
         viewModel.pickRandomColorButton()
-        GlobalScope.launch {
+        coroutineScope.launch {
             playSequence()
         }
+
     }
 
-   /* private fun checkUserInput(): Boolean { //overenie stlačenia správneho tlačidla používateľom
-        val index:Int = (colorOrder.size - 1)
-
-        if (colorOrder.isEmpty())
-            return true
-        
-        return false
-        //return (colorOrder.get(index) == userInput) //porovnanie
-    }*/
-
-    private fun signalizeColorButton(pColorButton:Int) {
-      /*  when (colorButton) {
-            0 -> { //binding.btnSimonYellow.setBackgroundColor(R.drawable.btn_yellow_pressed)
-                   binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow) }
-            1 -> { //binding.btnSimonBlue.setBackgroundColor(R.drawable.btn_blue_pressed)
-                    //Thread.sleep(1_000)
-                   binding.btnSimonBlue.setBackgroundColor(R.drawable.btn_blue) }
-            2 -> { //binding.btnSimonRed.setBackgroundColor(R.drawable.btn_red_pressed)
-                    //Thread.sleep(1_000)
-                   binding.btnSimonRed.setBackgroundColor(R.drawable.btn_red) }
-            3 -> { //binding.btnSimonGreen.setBackgroundColor(R.drawable.btn_green_pressed)
-                    //Thread.sleep(1_000)
-                   binding.btnSimonGreen.setBackgroundColor(R.drawable.btn_green) }
-        }*/
+    private fun letUserChooseColor() {
+        if (viewModel.getColorButtonsPressed() != viewModel.getRound())
+            letUserChooseColor()
     }
 
-    private fun userInputColorButton() {
-        
-    }
-
-    private fun setOnClickBackToMenu() {
-        binding.backToMenu.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
-        }
-    }
+     private fun checkUserSequence() { //overenie stlačenia správneho tlačidla používateľom
+         for (index in 0..viewModel.getGameSequence().size - 1) {
+             if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index])
+                 viewModel.setIsSame(false)
+         }
+         binding.tvScore.text = "asdfsdgfhf"
+     }
 
     private suspend fun playSequence() {
         binding.btnSimonYellow.isClickable = false
         binding.btnSimonBlue.isClickable = false
         binding.btnSimonRed.isClickable = false
         binding.btnSimonGreen.isClickable = false
-        for (index in 0 .. viewModel.getSequence().size - 1) {
-            when (viewModel.getSequence()[index]) {
+        for (index in 0 .. viewModel.getGameSequence().size - 1) {
+            when (viewModel.getGameSequence()[index]) {
                 0 -> {
                     delay(250)
                     binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
@@ -123,6 +103,89 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         binding.btnSimonRed.isClickable = true
         binding.btnSimonGreen.isClickable = true
     }
+
+    private fun setOnClickBtnSimonYellow() {
+        binding.btnSimonYellow.setOnClickListener() {
+            viewModel.addToUserSequence(0)
+            viewModel.addColorButtonsPressed()
+            if (viewModel.getColorButtonsPressed() == viewModel.getRound())
+                checkUserSequence()
+            if (viewModel.getIsSame()) {
+                viewModel.addRound()
+                viewModel.pickRandomColorButton()
+                coroutineScope.launch {
+                    playSequence()
+                }
+            }
+            else {
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+            }
+        }
+    }
+
+    private fun setOnClickBtnSimonBlue() {
+        binding.btnSimonBlue.setOnClickListener() {
+            viewModel.addToUserSequence(1)
+            viewModel.addColorButtonsPressed()
+            if (viewModel.getColorButtonsPressed() == viewModel.getRound())
+                checkUserSequence()
+            if (viewModel.getIsSame()) {
+                viewModel.addRound()
+                viewModel.pickRandomColorButton()
+                coroutineScope.launch {
+                    playSequence()
+                }
+            }
+            else {
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+            }
+        }
+    }
+
+    private fun setOnClickBtnSimonRed() {
+        binding.btnSimonRed.setOnClickListener() {
+            viewModel.addToUserSequence(2)
+            viewModel.addColorButtonsPressed()
+            if (viewModel.getColorButtonsPressed() == viewModel.getRound())
+                checkUserSequence()
+            if (viewModel.getIsSame()) {
+                viewModel.addRound()
+                viewModel.pickRandomColorButton()
+                coroutineScope.launch {
+                    playSequence()
+                }
+            }
+            else {
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+            }
+        }
+    }
+
+    private fun setOnClickBtnSimonGreen() {
+        binding.btnSimonGreen.setOnClickListener() {
+            viewModel.addToUserSequence(3)
+            viewModel.addColorButtonsPressed()
+            if (viewModel.getColorButtonsPressed() == viewModel.getRound())
+                checkUserSequence()
+            if (viewModel.getIsSame()) {
+                viewModel.addRound()
+                viewModel.pickRandomColorButton()
+                coroutineScope.launch {
+                    playSequence()
+                }
+            }
+            else {
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+            }
+        }
+    }
+
+    private fun setOnClickBackToMenu() {
+        binding.backToMenu.setOnClickListener() {
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
