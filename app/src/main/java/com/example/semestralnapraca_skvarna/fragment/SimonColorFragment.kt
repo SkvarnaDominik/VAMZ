@@ -48,7 +48,6 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         coroutineScope.launch {
             playSequence()
         }
-
     }
 
     private fun game(pColorButtonNumber:Int) {
