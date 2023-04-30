@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenu_to_settings"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_simonColorDifficultyFragment"
+            app:destination="@id/simonColorDifficultyFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_textColorDifficultyFragment"
+            app:destination="@id/textColorDifficultyFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/simonColorFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.SimonColorFragment"
+        android:label="fragment_simon_color"
+        tools:layout="@layout/fragment_simon_color" >
+        <action
+            android:id="@+id/action_simonColorFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countDownFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.CountDownFragment"
+        android:label="fragment_count_down"
+        tools:layout="@layout/fragment_count_down" >
+        <action
+            android:id="@+id/action_countDownFragment_to_simonColorFragment"
+            app:destination="@id/simonColorFragment" />
+        <action
+            android:id="@+id/action_countDownFragment_to_textColorFragment"
+            app:destination="@id/textColorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/textColorFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.TextColorFragment"
+        android:label="TextColorFragment" >
+        <action
+            android:id="@+id/action_textColorFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/simonColorDifficultyFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.SimonColorDifficultyFragment"
+        android:label="SimonColorDifficultyFragment" >
+        <action
+            android:id="@+id/action_simonColorDifficultyFragment_to_countDownFragment"
+            app:destination="@id/countDownFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/textColorDifficultyFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.TextColorDifficultyFragment"
+        android:label="TextColorDifficultyFragment" >
+        <action
+            android:id="@+id/action_textColorDifficultyFragment_to_countDownFragment"
+            app:destination="@id/countDownFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+</navigation>
