@@ -6,20 +6,30 @@ import androidx.lifecycle.ViewModel
 
 class SimonColorViewModel : ViewModel() {
 
-    private var round = MutableLiveData<Int>(1)
+    //private var round = MutableLiveData<Int>(1)
+    private var round: Int = 1
     fun getRound(): Int {
-        return round.value!!
+        //return round.value!!
+        return round
     }
     fun addRound() {
-        round.value = round.value!! + 1
+        //round.postValue(round.value!! + 1)
+        round += 1
     }
 
-    private var colorButtonsPressed = MutableLiveData<Int>(0)
+    //private var colorButtonsPressed = MutableLiveData<Int>(0)
+    private var colorButtonsPressed: Int = 0
     fun getColorButtonsPressed(): Int {
-        return colorButtonsPressed.value!!
+        //return colorButtonsPressed.value!!
+        return colorButtonsPressed
     }
     fun addColorButtonsPressed() {
-        colorButtonsPressed.value = colorButtonsPressed.value!! + 1
+        //colorButtonsPressed.postValue(colorButtonsPressed.value!! + 1)
+        colorButtonsPressed += 1
+    }
+    fun setColorButtonsPressed(pNumberPressed:Int) {
+        //colorButtonsPressed.postValue(pNumberPressed)
+        colorButtonsPressed = pNumberPressed
     }
 
     private var gameSequence = ArrayList<Int>()
@@ -32,17 +42,26 @@ class SimonColorViewModel : ViewModel() {
         return userSequence
     }
 
-    private var score = MutableLiveData<Int>()
-    fun getIsScore(): LiveData<Int> {
+    //private var score = MutableLiveData<Int>()
+    private var score: Int = 0
+    fun getScore(): Int {
+        //return score.value!!
         return score
     }
+    fun addScore() {
+        //score.postValue(score.value!! + 1)
+        score += 1
+    }
 
-    private var isSame = MutableLiveData<Boolean>(true)
+    //private var isSame = MutableLiveData<Boolean>(true)
+    private var isSame:Boolean = true
     fun getIsSame(): Boolean {
-        return isSame.value!!
+      //  return isSame.value!!
+        return isSame
     }
     fun setIsSame(pIsSame:Boolean) {
-        isSame.value = pIsSame
+        //isSame.postValue(pIsSame)
+        isSame = pIsSame
     }
 
     private var colorButton = MutableLiveData<Int>()
@@ -57,8 +76,10 @@ class SimonColorViewModel : ViewModel() {
     private fun addToGameSequence(pColorButton:Int) {
         gameSequence.add(pColorButton)
     }
-
     fun addToUserSequence(pColorButton:Int) {
         userSequence.add(pColorButton)
+    }
+    fun clearUserSequence() {
+        userSequence.clear()
     }
 }
