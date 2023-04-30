@@ -1,5 +1,6 @@
 package com.example.semestralnapraca_skvarna.view_model
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.semestralnapraca_skvarna.R
 
@@ -15,27 +16,27 @@ class SettingsViewModel: ViewModel() {
         return profilePictureResources
     }
 
-    private var indexOfProfilePicture:Int = 0
-    fun getIndexOfProfilePicture(): Int{
-        return indexOfProfilePicture
+    private var indexOfProfilePicture = MutableLiveData<Int>(0)
+    fun getIndexOfProfilePicture(): Int {
+        return indexOfProfilePicture.value!!
     }
     fun setIndexOfProfilePicture(pIndex:Int) {
-        indexOfProfilePicture= pIndex
+        indexOfProfilePicture.value = pIndex
     }
 
-    private var username:String = "Template"
-    fun getNewUsername(): String{
-        return username
+    private var username = MutableLiveData<String>("Template")
+    fun getNewUsername(): String {
+        return username.value!!
     }
     fun setNewUsername(pNewUsername:String) {
-        username = pNewUsername
+        username.value = pNewUsername
     }
 
-    private var isDarkMode:Boolean = true
-    fun getIsDarkMode(): Boolean{
-        return isDarkMode
+    private var isDarkMode = MutableLiveData<Boolean>(true)
+    fun getIsDarkMode(): Boolean {
+        return isDarkMode.value!!
     }
     fun setIsDarkMode(pIsDarkMode:Boolean) {
-        isDarkMode = pIsDarkMode
+        isDarkMode.value = pIsDarkMode
     }
 }

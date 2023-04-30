@@ -5,35 +5,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorBinding
+import com.example.semestralnapraca_skvarna.view_model.SimonColorViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
 
     private var _binding: FragmentSimonColorBinding? = null
     private val binding get() = _binding!!
 
-
+    private lateinit var viewModel: SimonColorViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
         _binding = FragmentSimonColorBinding.inflate(inflater, container, false)
+
+        viewModel = ViewModelProvider(this)[SimonColorViewModel::class.java]
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.add()
+
+        GlobalScope.launch {
+            displaySequence()
+        }
         game()
         setOnClickBackToMenu()
+        //displaySequence()
     }
 
     private fun game() {
+        binding.btnSimonYellow.isClickable = false
+
 /*
         colorButton = pickRandomColorButton()
         colorOrder.add(colorButton)
@@ -93,6 +109,38 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     private fun pickRandomColorButton():Int { //vygenerovanie náhodného čísla z rozsahu 0-3
         return (0..3).random()
     }
+
+    private suspend fun displaySequence() {
+        for (i in viewModel.getSequence()) {
+            when (viewModel.getSequence()[i]) {
+                0 -> {
+                    delay(250)
+                    binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
+                    delay(250)
+                    binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow)
+                }
+                1 -> {
+                    delay(250)
+                    binding.btnSimonBlue.setBackgroundResource(R.drawable.btn_blue_pressed)
+                    delay(250)
+                    binding.btnSimonBlue.setBackgroundResource(R.drawable.btn_blue)
+                }
+                2 -> {
+                    delay(250)
+                    binding.btnSimonRed.setBackgroundResource(R.drawable.btn_red_pressed)
+                    delay(250)
+                    binding.btnSimonRed.setBackgroundResource(R.drawable.btn_red)
+                }
+                3 -> {
+                    delay(250)
+                    binding.btnSimonGreen.setBackgroundResource(R.drawable.btn_green_pressed)
+                    delay(250)
+                    binding.btnSimonGreen.setBackgroundResource(R.drawable.btn_green)
+                }
+            }
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

@@ -8,33 +8,38 @@ import androidx.lifecycle.ViewModel
 class SimonColorViewModel : ViewModel() {
 
     private var round = MutableLiveData<Int>(0)
-    private var colorOrder = ArrayList<Int>()
+    fun getRound(): LiveData<Int> {
+        return round
+    }
+
+    private var sequence = ArrayList<Int>()
+    fun getSequence(): ArrayList<Int> {
+        return sequence
+    }
+
     private var score = MutableLiveData<Int>()
-    private var same = MutableLiveData<Boolean>()
+    fun getIsScore(): LiveData<Int> {
+        return score
+    }
+
+    private var isSame = MutableLiveData<Boolean>()
+    fun getIsSame(): LiveData<Boolean> {
+        return isSame
+    }
+
     private var colorButton = MutableLiveData<Int>()
-
-    private lateinit var timer: CountDownTimer
-
-    private var isFinished = MutableLiveData<Boolean>()
-    fun getIsFinished(): LiveData<Boolean> {
-        return isFinished
+    fun getColorButton(): LiveData<Int> {
+        return colorButton
     }
 
-    private val seconds = MutableLiveData<Int>()
-    fun getSeconds(): LiveData<Int> {
-        return seconds
-    }
+    fun add() {
+        sequence.add(0)
+        sequence.add(1)
+        sequence.add(1)
+        sequence.add(3)
+        sequence.add(0)
+        sequence.add(2)
+        sequence.add(1)
 
-    fun startTimer() {
-        timer = object : CountDownTimer((round.value!! * 1000).toLong(), 1000) {
-            override fun onTick(p0: Long) {
-                val timeLeft = p0/1000
-                seconds.value = timeLeft.toInt()
-            }
-
-            override fun onFinish() {
-                isFinished.value = true
-            }
-        }.start()
     }
 }
