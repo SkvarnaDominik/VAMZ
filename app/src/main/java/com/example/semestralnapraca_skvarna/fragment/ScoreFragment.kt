@@ -34,4 +34,9 @@ class ScoreFragment : Fragment(R.layout.fragment_score) {
             Navigation.findNavController(binding.root).navigate(R.id.action_scoreFragment_to_mainMenuFragment)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

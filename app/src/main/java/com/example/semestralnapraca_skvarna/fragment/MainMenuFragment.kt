@@ -85,5 +85,10 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
             Navigation.findNavController(binding.root).navigate(R.id.action_mainMenu_to_settings)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
 

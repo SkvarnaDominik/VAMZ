@@ -35,4 +35,9 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

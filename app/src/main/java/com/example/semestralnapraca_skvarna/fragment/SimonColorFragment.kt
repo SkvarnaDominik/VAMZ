@@ -14,11 +14,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     private var _binding: FragmentSimonColorBinding? = null
     private val binding get() = _binding!!
 
-    private var round:Int = 1
-    private var colorOrder = ArrayList<Int>()
-    private var score:Int = 0
-    private var same:Boolean = true
-    private var colorButton:Int = pickRandomColorButton()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +34,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     }
 
     private fun game() {
-
+/*
         colorButton = pickRandomColorButton()
         colorOrder.add(colorButton)
 
@@ -55,14 +51,10 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         }
         else {
             same = false
-        }
+        }*/
     }
 
-    private fun pickRandomColorButton():Int { //vygenerovanie náhodného čísla z rozsahu 0-3
-        return (0..3).random()
-    }
-
-    private fun checkUserInput(): Boolean { //overenie stlačenia správneho tlačidla používateľom
+   /* private fun checkUserInput(): Boolean { //overenie stlačenia správneho tlačidla používateľom
         val index:Int = (colorOrder.size - 1)
 
         if (colorOrder.isEmpty())
@@ -70,10 +62,10 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         
         return false
         //return (colorOrder.get(index) == userInput) //porovnanie
-    }
+    }*/
 
     private fun signalizeColorButton(pColorButton:Int) {
-        when (colorButton) {
+      /*  when (colorButton) {
             0 -> { //binding.btnSimonYellow.setBackgroundColor(R.drawable.btn_yellow_pressed)
                    binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow) }
             1 -> { //binding.btnSimonBlue.setBackgroundColor(R.drawable.btn_blue_pressed)
@@ -85,7 +77,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
             3 -> { //binding.btnSimonGreen.setBackgroundColor(R.drawable.btn_green_pressed)
                     //Thread.sleep(1_000)
                    binding.btnSimonGreen.setBackgroundColor(R.drawable.btn_green) }
-        }
+        }*/
     }
 
     private fun userInputColorButton() {
@@ -96,6 +88,10 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         binding.backToMenu.setOnClickListener() {
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
         }
+    }
+
+    private fun pickRandomColorButton():Int { //vygenerovanie náhodného čísla z rozsahu 0-3
+        return (0..3).random()
     }
 
     override fun onDestroy() {

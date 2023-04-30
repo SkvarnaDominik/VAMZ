@@ -77,4 +77,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -36,4 +36,9 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_countDownFragment)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

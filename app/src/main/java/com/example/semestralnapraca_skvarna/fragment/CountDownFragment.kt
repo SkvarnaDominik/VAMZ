@@ -21,18 +21,7 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
     private lateinit var viewModel: CountDownViewModel //prepojenie Settings s SettingsViewModel
 
-
     private val sharedViewModel: SharedViewModel by activityViewModels()
-
-    //private val args: CountDownFragmentArgs by navArgs<>()
-    //private val args = this.arguments
-    //private val destination = requireArguments().getString("destination").toString()
-    //private val data = args?.getString("destination").toString()*/
-
-   // private val args:CountDownFragmentArgs by navArgs()
-    //private val destination = this.arguments.toString()
-
-   //private val destination = args.destination
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
