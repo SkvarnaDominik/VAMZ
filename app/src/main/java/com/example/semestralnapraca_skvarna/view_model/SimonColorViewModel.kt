@@ -32,14 +32,11 @@ class SimonColorViewModel : ViewModel() {
         return colorButton
     }
 
-    fun add() {
-        sequence.add(0)
-        sequence.add(1)
-        sequence.add(1)
-        sequence.add(3)
-        sequence.add(0)
-        sequence.add(2)
-        sequence.add(1)
+    fun pickRandomColorButton() { //vygenerovanie náhodného čísla z rozsahu 0-3
+         addToSequence((0..3).random())
+    }
 
+    private fun addToSequence(pColorButton:Int) {
+        sequence.add(pColorButton)
     }
 }

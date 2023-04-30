@@ -37,37 +37,16 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.add()
-
-        GlobalScope.launch {
-            displaySequence()
-        }
         game()
         setOnClickBackToMenu()
         //displaySequence()
     }
 
     private fun game() {
-        binding.btnSimonYellow.isClickable = false
-
-/*
-        colorButton = pickRandomColorButton()
-        colorOrder.add(colorButton)
-
-        colorOrder.forEach {
-            //signalizeColorButton(it)
+        viewModel.pickRandomColorButton()
+        GlobalScope.launch {
+            playSequence()
         }
-
-
-        //uzivatel Input
-
-        if (checkUserInput()){
-            score.inc()
-            binding.textView2.setText(score)
-        }
-        else {
-            same = false
-        }*/
     }
 
    /* private fun checkUserInput(): Boolean { //overenie stlačenia správneho tlačidla používateľom
@@ -106,13 +85,13 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         }
     }
 
-    private fun pickRandomColorButton():Int { //vygenerovanie náhodného čísla z rozsahu 0-3
-        return (0..3).random()
-    }
-
-    private suspend fun displaySequence() {
-        for (i in viewModel.getSequence()) {
-            when (viewModel.getSequence()[i]) {
+    private suspend fun playSequence() {
+        binding.btnSimonYellow.isClickable = false
+        binding.btnSimonBlue.isClickable = false
+        binding.btnSimonRed.isClickable = false
+        binding.btnSimonGreen.isClickable = false
+        for (index in 0 .. viewModel.getSequence().size - 1) {
+            when (viewModel.getSequence()[index]) {
                 0 -> {
                     delay(250)
                     binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
@@ -139,8 +118,11 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
                 }
             }
         }
+        binding.btnSimonYellow.isClickable = true
+        binding.btnSimonBlue.isClickable = true
+        binding.btnSimonRed.isClickable = true
+        binding.btnSimonGreen.isClickable = true
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
