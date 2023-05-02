@@ -42,17 +42,6 @@ class SimonColorViewModel : ViewModel() {
         return userSequence
     }
 
-    //private var score = MutableLiveData<Int>()
-    private var score: Int = 0
-    fun getScore(): Int {
-        //return score.value!!
-        return score
-    }
-    fun addScore() {
-        //score.postValue(score.value!! + 1)
-        score += 1
-    }
-
     //private var isSame = MutableLiveData<Boolean>(true)
     private var isSame:Boolean = true
     fun getIsSame(): Boolean {

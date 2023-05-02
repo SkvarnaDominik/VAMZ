@@ -8,10 +8,12 @@ import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSettingsBinding
 import com.example.semestralnapraca_skvarna.view_model.SettingsViewModel
+import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -19,6 +21,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
     private lateinit var viewModel: SettingsViewModel //prepojenie Settings s SettingsViewModel
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +30,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
 
-        binding.tvUsername.text = viewModel.getNewUsername()
-        binding.ivProfilePicture.setImageResource(viewModel.getProfilePictureResources()[viewModel.getIndexOfProfilePicture()])
+        binding.tvUsername.text = sharedViewModel.getNewUsername()
+        binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
         return binding.root
     }
 
@@ -41,7 +44,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private fun setDarkLightMode(view: View) {
         binding.swDarkMode.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView: CompoundButton, isChecked: Boolean ->
-            if (binding.swDarkMode.isChecked && viewModel.getIsDarkMode()) {
+            if (binding.swDarkMode.isChecked && sharedViewModel.getIsDarkMode()) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -50,8 +53,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     }
 
     private fun changeUserName() {
-        val button = binding.btnChangeUserName
-        button.setOnClickListener() {
+        binding.btnChangeUserName.setOnClickListener() {
             if (binding.etUserName.text.toString().length > 10) {
                 Toast.makeText(activity, "Username can be long only 10 characters", Toast.LENGTH_SHORT).show()
             }
@@ -59,8 +61,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 Toast.makeText(activity, "Username can't be empty", Toast.LENGTH_SHORT).show()
             }
             else {
-                viewModel.setNewUsername(binding.etUserName.text.toString())
-                binding.tvUsername.text = viewModel.getNewUsername()
+                sharedViewModel.setNewUsername(binding.etUserName.text.toString())
+                binding.tvUsername.text = sharedViewModel.getNewUsername()
                 Toast.makeText(activity, "Username was changed", Toast.LENGTH_SHORT).show()
             }
         }
@@ -68,12 +70,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private fun changeProfilePicture() {
         binding.ivProfilePicture.setOnClickListener {
-            if (viewModel.getIndexOfProfilePicture() == viewModel.getProfilePictureResources().size)
-                viewModel.setIndexOfProfilePicture(0)
-            else {
-                binding.ivProfilePicture.setImageResource(viewModel.getProfilePictureResources()[viewModel.getIndexOfProfilePicture()])
-                viewModel.setIndexOfProfilePicture(viewModel.getIndexOfProfilePicture() + 1)
-            }
+            sharedViewModel.setIndexOfProfilePicture(sharedViewModel.getIndexOfProfilePicture() + 1)
+            if (sharedViewModel.getIndexOfProfilePicture() == sharedViewModel.getProfilePictureResources().size)
+                sharedViewModel.setIndexOfProfilePicture(0)
+            binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
             Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show()
         }
     }

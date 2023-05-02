@@ -11,9 +11,9 @@
 
     <Button
         android:id="@+id/btnBackToMenu"
-        android:layout_width="104dp"
-        android:layout_height="40dp"
-        android:text="@string/back_to_menu"
+        android:layout_width="185dp"
+        android:layout_height="35dp"
+        android:text="@string/main_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

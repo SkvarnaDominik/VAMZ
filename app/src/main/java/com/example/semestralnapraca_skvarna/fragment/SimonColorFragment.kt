@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorBinding
+import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 import com.example.semestralnapraca_skvarna.view_model.SimonColorViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,15 +23,15 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: SimonColorViewModel
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
-    val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSimonColorBinding.inflate(inflater, container, false)
-
         viewModel = ViewModelProvider(this)[SimonColorViewModel::class.java]
 
         return binding.root
@@ -57,8 +59,8 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
             checkUserSequence()
             if (viewModel.getIsSame()) {
                 viewModel.clearUserSequence()
-                viewModel.addScore()
-                binding.tvScore.text = viewModel.getScore().toString()
+                sharedViewModel.addScore()
+                binding.tvScore.text = sharedViewModel.getScore().toString()
                 viewModel.setColorButtonsPressed(0)
                 viewModel.addRound()
                 viewModel.pickRandomColorButton()
@@ -145,7 +147,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     }
 
     private fun setOnClickBackToMenu() {
-        binding.backToMenu.setOnClickListener() {
+        binding.btnBackToMenu.setOnClickListener() {
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
         }
     }

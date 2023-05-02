@@ -31,7 +31,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun setOnClickBackToMenu() {
-        binding.backToMenu.setOnClickListener() {
+        binding.btnBackToMenu.setOnClickListener() {
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment)
         }
     }

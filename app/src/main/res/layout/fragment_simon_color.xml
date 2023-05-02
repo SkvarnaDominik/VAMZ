@@ -65,10 +65,10 @@
         app:layout_constraintVertical_bias="0.353" />
 
     <Button
-        android:id="@+id/backToMenu"
+        android:id="@+id/btnBackToMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back_to_menu"
+        android:text="@string/main_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
