@@ -45,7 +45,7 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
 
     private fun displaySeconds() {
         viewModel.getSeconds().observe(viewLifecycleOwner, Observer {
-            binding.seconds.text = (it.inc()  ).toString()
+            binding.tvSeconds.text = (it.inc()  ).toString()
         })
     }
 

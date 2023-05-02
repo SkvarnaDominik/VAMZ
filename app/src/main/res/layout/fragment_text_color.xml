@@ -76,11 +76,11 @@
         android:id="@+id/tvMode"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:text="Farba"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,4 +93,27 @@
         android:text="Modrá"
         app:layout_constraintStart_toStartOf="@+id/tvMode"
         app:layout_constraintTop_toBottomOf="@+id/tvMode" />
+
+    <TextView
+        android:id="@+id/tvSeconds"
+        android:layout_width="57dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="80dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSecondsTitle"
+        android:layout_width="122dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="50dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="Čas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvMode" />
 </androidx.constraintlayout.widget.ConstraintLayout>

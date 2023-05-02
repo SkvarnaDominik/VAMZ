@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
@@ -45,6 +46,9 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         setOnClickBtnGreen()
         setOnClickBackToMenu()
 
+        viewModel.startTimer(5)
+        displaySeconds()
+        isFinished()
         gameSetup()
     }
 
@@ -59,6 +63,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
         viewModel.shuffleTextColors()
         viewModel.shuffleColorButtons()
+
         setupColorButtons()
 
         viewModel.setWinningColorButton(determinateWinningButton())
@@ -66,6 +71,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
    private fun game(pColorButtonNumber:Int) {
             isSameAsChosen(determinateWinningButton(), pColorButtonNumber)
             if (viewModel.getIsSame()) {
+               viewModel.restartTimer()
                 sharedViewModel.addScore()
                 binding.tvScore.text = sharedViewModel.getScore().toString()
                 gameSetup()
@@ -105,6 +111,19 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     private fun isSameAsChosen(pWinningButtonNumber: Int,pColorButtonNumber: Int) {
         if (pWinningButtonNumber != pColorButtonNumber)
             viewModel.setIsSame(false)
+    }
+
+    private fun displaySeconds() {
+        viewModel.getSeconds().observe(viewLifecycleOwner, Observer {
+            binding.tvSeconds.text = (it.inc()  ).toString()
+        })
+    }
+
+    private fun isFinished() {
+        viewModel.getIsFinished().observe(viewLifecycleOwner, Observer {
+            sharedViewModel.resetScore()
+            Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_gameOverviewFragment)
+        })
     }
 
    private fun setOnClickBtnYellow() {

@@ -10,7 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/seconds"
+        android:id="@+id/tvSeconds"
         android:layout_width="372dp"
         android:layout_height="638dp"
         android:autoSizeTextType="uniform"
