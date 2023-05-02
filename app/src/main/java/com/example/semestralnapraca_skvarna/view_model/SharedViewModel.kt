@@ -25,6 +25,9 @@ class SharedViewModel : ViewModel() {
         //score.postValue(score.value!! + 1)
         score += 1
     }
+    fun resetScore() {
+        score = 0
+    }
 
     private val profilePictureResources: IntArray = intArrayOf(
         R.drawable.michael,

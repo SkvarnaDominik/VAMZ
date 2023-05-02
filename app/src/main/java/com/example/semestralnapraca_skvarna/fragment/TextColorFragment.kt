@@ -13,7 +13,6 @@ import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentTextColorBinding
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 import com.example.semestralnapraca_skvarna.view_model.TextColorViewModel
-import kotlinx.coroutines.launch
 
 class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
@@ -51,24 +50,46 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun gameSetup() {
         viewModel.shuffleModes()
+        viewModel.setColor(viewModel.getModes()[0])
         binding.tvMode.text = viewModel.getMode()
 
         viewModel.shuffleTextColors()
-        binding.tvColor.text = viewModel.getColor()
+        viewModel.setMode(viewModel.getModes()[0])
+        binding.tvColor.text = viewModel.getTextColor()
+
 
         viewModel.shuffleTextColors()
         viewModel.shuffleColorButtons()
         setupColorButtons()
+
+        viewModel.setWinningColorButton(determinateWinningButton())
     }
    private fun game(pColorButtonNumber:Int) {
-            isSameAsChosen(pColorButtonNumber)
+            isSameAsChosen(determinateWinningButton(), pColorButtonNumber)
             if (viewModel.getIsSame()) {
                 sharedViewModel.addScore()
-                setupColorButtons()
+                binding.tvScore.text = sharedViewModel.getScore().toString()
+                gameSetup()
             }
             else {
-                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+                Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_gameOverviewFragment)
             }
+    }
+
+    private fun determinateWinningButton(): Int {
+        if (viewModel.getMode() == "Text") {
+            for (index in 0 until viewModel.getTextColors().size) {
+                if (viewModel.getTextColors()[index] == viewModel.getTextColor())
+                    return index
+            }
+        }
+        return 0
+       /* else {
+            for (index in 0 until viewModel.getColorButtons().size) {
+                if (viewModel.getColorButtons()[index]. == )
+                    return index
+            }
+        }*/
     }
 
     private fun setupColorButtons() {
@@ -82,57 +103,14 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         binding.btnGreen.text = viewModel.getTextColors()[3]
     }
 
-    private fun isSameAsChosen(pColorButtonNumber: Int) {
-        when (pColorButtonNumber) {
-            0 -> {
-                if (viewModel.getMode() == "Text") {
-                    if (binding.btnYellow.text == viewModel.getColor()){
-                        sharedViewModel.addScore()
-                    }
-                    else {
-                        viewModel.setIsSame(false)
-                    }
-                }
-            }
-
-            1 -> {
-                if (viewModel.getMode() == "Text") {
-                    if (binding.btnBlue.text == viewModel.getColor()){
-                        sharedViewModel.addScore()
-                    }
-                    else {
-                        viewModel.setIsSame(false)
-                    }
-                }
-            }
-
-            2 -> {
-                if (viewModel.getMode() == "Text") {
-                    if (binding.btnRed.text == viewModel.getColor()){
-                        sharedViewModel.addScore()
-                    }
-                    else {
-                        viewModel.setIsSame(false)
-                    }
-                }
-            }
-
-            3 -> {
-                if (viewModel.getMode() == "Text") {
-                    if (binding.btnGreen.text == viewModel.getColor()){
-                        sharedViewModel.addScore()
-                    }
-                    else {
-                        viewModel.setIsSame(false)
-                    }
-                }
-            }
-        }
+    private fun isSameAsChosen(pWinningButtonNumber: Int,pColorButtonNumber: Int) {
+        if (pWinningButtonNumber != pColorButtonNumber)
+            viewModel.setIsSame(false)
     }
 
    private fun setOnClickBtnYellow() {
         binding.btnYellow.setOnClickListener() {
-           game(0, )
+           game(0 )
         }
     }
 

@@ -5,61 +5,71 @@ import com.example.semestralnapraca_skvarna.R
 
 class TextColorViewModel: ViewModel() {
 
-    private var colorButtons: IntArray = intArrayOf(R.drawable.btn_yellow, R.drawable.btn_blue, R.drawable.btn_red, R.drawable.btn_green)
+    private var colorButtons: IntArray = intArrayOf(
+        R.drawable.btn_yellow,
+        R.drawable.btn_blue,
+        R.drawable.btn_red,
+        R.drawable.btn_green
+    )
+
     fun shuffleColorButtons() {
-        colorButtons.shuffle()
+       colorButtons.shuffle()
     }
+
     fun getColorButtons(): IntArray {
         return colorButtons
     }
 
-    private val textColors = arrayOf<String> ("Žltá", "Modrá", "Červená", "Zelená")
+    private val textColors = arrayOf("Žltá", "Modrá", "Červená", "Zelená")
     fun getTextColors(): Array<String> {
         return textColors
     }
+
     fun shuffleTextColors() {
         textColors.shuffle()
-        color = textColors[0]
+    }
+    fun setColor(pColor:String) {
+        color = pColor
     }
 
     private var color: String = ""
-    fun getColor(): String {
+    fun getTextColor(): String {
         return color
     }
 
-    val modes = arrayOf("Farba", "Text")
+    private val modes = arrayOf("Text", "Text")
     fun shuffleModes() {
         modes.shuffle()
-        mode = modes[0]
+    }
+    fun getModes(): Array<String> {
+        return modes
+    }
+    fun setMode(pMode:String) {
+        mode = pMode
     }
 
-    private var mode:String = ""
+    private var mode: String = ""
     fun getMode(): String {
         return mode
     }
 
     //private var isSame = MutableLiveData<Boolean>(true)
-    private var isSame:Boolean = true
+    private var isSame: Boolean = true
     fun getIsSame(): Boolean {
         //  return isSame.value!!
         return isSame
     }
-    fun setIsSame(pIsSame:Boolean) {
+
+    fun setIsSame(pIsSame: Boolean) {
         //isSame.postValue(pIsSame)
         isSame = pIsSame
     }
 
-    private var chosenButton:Int = 0
-    fun getChosenButton(): Int {
-        return chosenButton
+    private var winningColorButton: Int = 0
+    fun getWinningColorButton(): Int {
+        return winningColorButton
     }
-    fun chooseColorButton() {
-        chosenButton = pickRandomColorButton()
-    }
-
-
-
-    private fun pickRandomColorButton(): Int { //vygenerovanie náhodného čísla z rozsahu 0-3
-        return (0..3).random()
+    fun setWinningColorButton(pWinningColorButton:Int) {
+        winningColorButton = pWinningColorButton
     }
 }

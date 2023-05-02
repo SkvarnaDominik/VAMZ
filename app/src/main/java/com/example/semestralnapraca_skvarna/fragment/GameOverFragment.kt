@@ -34,7 +34,6 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         setOnClickBackToMenu()
         binding.tvScore.text = sharedViewModel.getScore().toString()
-
     }
 
     private fun addScoreToRoom() {
@@ -47,6 +46,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_gameOverviewFragment_to_mainMenuFragment)
         }
     }
