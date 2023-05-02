@@ -53,6 +53,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun gameSetup() {
+        var string:String = viewModel.getTextColors()[0].toString()
         viewModel.shuffleModes()
         viewModel.setMode(viewModel.getModes()[0])
         binding.tvMode.text = viewModel.getMode()
@@ -88,12 +89,37 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
                     return index
             }
         }
-       /*else {
-            for (index in 0 until viewModel.getColorButtons().size) {
-                if (viewModel.getColorButtons()[index].toString() == )
-                    return index
-            }
-        }*/
+       else {
+           when (viewModel.getTextColor()) {
+               "Žltá" -> {
+                   for (index in 0 until viewModel.getColorButtons().size) {
+                       if (viewModel.getColorButtons()[index].toString() == "2131165323") //Toto je (R.drawable.btn_yellow).toString()
+                           return index
+                   }
+               }
+
+               "Modrá" -> {
+                   for (index in 0 until viewModel.getColorButtons().size) {
+                       if (viewModel.getColorButtons()[index].toString() == "2131165306")
+                           return index
+                   }
+               }
+
+               "Červená" -> {
+                   for (index in 0 until viewModel.getColorButtons().size) {
+                       if (viewModel.getColorButtons()[index].toString() == "2131165320")
+                           return index
+                   }
+               }
+
+               "Zelená" -> {
+                   for (index in 0 until viewModel.getColorButtons().size) {
+                       if (viewModel.getColorButtons()[index].toString() == "2131165313")
+                           return index
+                   }
+               }
+           }
+        }
         return -1
     }
 
@@ -152,6 +178,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment)
         }
     }

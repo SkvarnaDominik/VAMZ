@@ -40,7 +40,7 @@ class TextColorViewModel: ViewModel() {
         return color
     }
 
-    private val modes = arrayOf("Text", "Text")
+    private val modes = arrayOf("Farba", "Text")
     fun shuffleModes() {
         modes.shuffle()
     }
@@ -100,7 +100,6 @@ class TextColorViewModel: ViewModel() {
             }
         }.start()
     }
-
 
     fun restartTimer() {
         timer.cancel()

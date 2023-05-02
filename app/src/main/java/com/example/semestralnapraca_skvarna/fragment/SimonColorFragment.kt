@@ -146,6 +146,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
         }
     }
