@@ -40,10 +40,10 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setOnClickBtnSimonYellow()
-        setOnClickBtnSimonBlue()
-        setOnClickBtnSimonRed()
-        setOnClickBtnSimonGreen()
+        setOnClickBtnYellow()
+        setOnClickBtnBlue()
+        setOnClickBtnRed()
+        setOnClickBtnGreen()
         setOnClickBackToMenu()
 
         viewModel.pickRandomColorButton()
@@ -82,66 +82,64 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
      }
 
     private suspend fun playSequence() {
-        binding.btnSimonYellow.isClickable = false
-        binding.btnSimonBlue.isClickable = false
-        binding.btnSimonRed.isClickable = false
-        binding.btnSimonGreen.isClickable = false
+        binding.btnYellow.isClickable = false
+        binding.btnBlue.isClickable = false
+        binding.btnRed.isClickable = false
+        binding.btnGreen.isClickable = false
         for (index in 0 until viewModel.getGameSequence().size) {
             when (viewModel.getGameSequence()[index]) {
                 0 -> {
                     delay(250)
-                    binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
+                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
                     delay(250)
-                    binding.btnSimonYellow.setBackgroundResource(R.drawable.btn_yellow)
+                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow)
                 }
                 1 -> {
                     delay(250)
-                    binding.btnSimonBlue.setBackgroundResource(R.drawable.btn_blue_pressed)
+                    binding.btnBlue.setBackgroundResource(R.drawable.btn_blue_pressed)
                     delay(250)
-                    binding.btnSimonBlue.setBackgroundResource(R.drawable.btn_blue)
+                    binding.btnBlue.setBackgroundResource(R.drawable.btn_blue)
                 }
                 2 -> {
                     delay(250)
-                    binding.btnSimonRed.setBackgroundResource(R.drawable.btn_red_pressed)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red_pressed)
                     delay(250)
-                    binding.btnSimonRed.setBackgroundResource(R.drawable.btn_red)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red)
                 }
                 3 -> {
                     delay(250)
-                    binding.btnSimonGreen.setBackgroundResource(R.drawable.btn_green_pressed)
+                    binding.btnGreen.setBackgroundResource(R.drawable.btn_green_pressed)
                     delay(250)
-                    binding.btnSimonGreen.setBackgroundResource(R.drawable.btn_green)
+                    binding.btnGreen.setBackgroundResource(R.drawable.btn_green)
                 }
             }
         }
-        binding.btnSimonYellow.isClickable = true
-        binding.btnSimonBlue.isClickable = true
-        binding.btnSimonRed.isClickable = true
-        binding.btnSimonGreen.isClickable = true
+        binding.btnYellow.isClickable = true
+        binding.btnBlue.isClickable = true
+        binding.btnRed.isClickable = true
+        binding.btnGreen.isClickable = true
     }
 
-    private fun setOnClickBtnSimonYellow() {
-        binding.btnSimonYellow.setOnClickListener() {
+    private fun setOnClickBtnYellow() {
+        binding.btnYellow.setOnClickListener() {
            game(0, )
         }
     }
 
-    private fun setOnClickBtnSimonBlue() {
-        binding.btnSimonBlue.setOnClickListener() {
+    private fun setOnClickBtnBlue() {
+        binding.btnBlue.setOnClickListener() {
            game(1)
         }
     }
 
-    private fun setOnClickBtnSimonRed() {
-        binding.btnSimonRed.setOnClickListener() {
+    private fun setOnClickBtnRed() {
+        binding.btnRed.setOnClickListener() {
             game(2)
         }
     }
 
-
-
-    private fun setOnClickBtnSimonGreen() {
-        binding.btnSimonGreen.setOnClickListener() {
+    private fun setOnClickBtnGreen() {
+        binding.btnGreen.setOnClickListener() {
             game(3)
         }
     }
@@ -151,7 +149,6 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

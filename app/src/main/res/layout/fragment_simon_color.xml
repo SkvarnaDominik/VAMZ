@@ -8,7 +8,7 @@
     tools:context=".fragment.SimonColorFragment">
 
     <Button
-        android:id="@+id/btnSimonYellow"
+        android:id="@+id/btnYellow"
         android:layout_width="165dp"
         android:layout_height="200dp"
         android:layout_marginStart="25dp"
@@ -19,35 +19,35 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btnSimonBlue"
+        android:id="@+id/btnBlue"
         android:layout_width="165dp"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSimonYellow"
+        app:layout_constraintStart_toEndOf="@+id/btnYellow"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btnSimonRed"
+        android:id="@+id/btnRed"
         android:layout_width="165dp"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_red"
-        app:layout_constraintStart_toStartOf="@+id/btnSimonYellow"
-        app:layout_constraintTop_toBottomOf="@+id/btnSimonYellow"
+        app:layout_constraintStart_toStartOf="@+id/btnYellow"
+        app:layout_constraintTop_toBottomOf="@+id/btnYellow"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btnSimonGreen"
+        android:id="@+id/btnGreen"
         android:layout_width="165dp"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSimonRed"
-        app:layout_constraintTop_toBottomOf="@+id/btnSimonBlue"
+        app:layout_constraintStart_toEndOf="@+id/btnRed"
+        app:layout_constraintTop_toBottomOf="@+id/btnBlue"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSimonGreen"
+        app:layout_constraintTop_toBottomOf="@+id/btnGreen"
         app:layout_constraintVertical_bias="0.353" />
 
     <Button
