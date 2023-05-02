@@ -50,13 +50,12 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun gameSetup() {
         viewModel.shuffleModes()
-        viewModel.setColor(viewModel.getModes()[0])
+        viewModel.setMode(viewModel.getModes()[0])
         binding.tvMode.text = viewModel.getMode()
 
         viewModel.shuffleTextColors()
-        viewModel.setMode(viewModel.getModes()[0])
+        viewModel.setColor(viewModel.getTextColors()[0])
         binding.tvColor.text = viewModel.getTextColor()
-
 
         viewModel.shuffleTextColors()
         viewModel.shuffleColorButtons()
@@ -83,13 +82,13 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
                     return index
             }
         }
-        return 0
-       /* else {
+       /*else {
             for (index in 0 until viewModel.getColorButtons().size) {
-                if (viewModel.getColorButtons()[index]. == )
+                if (viewModel.getColorButtons()[index].toString() == )
                     return index
             }
         }*/
+        return -1
     }
 
     private fun setupColorButtons() {
