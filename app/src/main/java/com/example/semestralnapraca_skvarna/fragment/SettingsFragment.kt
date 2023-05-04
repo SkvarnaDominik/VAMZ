@@ -9,10 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSettingsBinding
-import com.example.semestralnapraca_skvarna.view_model.SettingsViewModel
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 
 
@@ -20,7 +18,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
-    private lateinit var viewModel: SettingsViewModel //prepojenie Settings s SettingsViewModel
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -28,7 +25,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
 
         binding.tvUsername.text = sharedViewModel.getNewUsername()
         binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])

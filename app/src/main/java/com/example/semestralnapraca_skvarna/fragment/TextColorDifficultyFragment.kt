@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
-import com.example.semestralnapraca_skvarna.databinding.FragmentCountDownBinding
 import com.example.semestralnapraca_skvarna.databinding.FragmentTextColorDifficultyBinding
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 
