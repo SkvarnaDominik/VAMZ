@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/simonColorLayout"
+    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SimonColorHardFragment">
+    tools:context=".fragment.SimonColorEasyFragment">
 
     <Button
         android:id="@+id/btnYellow"
@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:background="@drawable/btn_yellow"
+        android:background="@drawable/btn_red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -30,23 +30,13 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btnRed"
-        android:layout_width="165dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/btn_red"
-        app:layout_constraintStart_toStartOf="@+id/btnYellow"
-        app:layout_constraintTop_toBottomOf="@+id/btnYellow"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
         android:id="@+id/btnGreen"
         android:layout_width="165dp"
         android:layout_height="200dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnRed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnBlue"
         tools:ignore="SpeakableTextPresentCheck" />
 
