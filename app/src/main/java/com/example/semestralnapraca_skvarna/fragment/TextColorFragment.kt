@@ -46,6 +46,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         setOnClickBtnGreen()
         setOnClickBackToMenu()
 
+        binding.tvSeconds.text = "3"
         viewModel.startTimer(5)
         displaySeconds()
         isFinished()
@@ -147,7 +148,6 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun isFinished() {
         viewModel.getIsFinished().observe(viewLifecycleOwner, Observer {
-            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_gameOverviewFragment)
         })
     }
@@ -178,7 +178,6 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
-            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment)
         }
     }
