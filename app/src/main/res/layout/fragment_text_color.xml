@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnYellow"
+        android:id="@+id/btnRed"
         android:layout_width="165dp"
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
@@ -23,7 +23,7 @@
         android:layout_marginTop="200dp"
         android:background="@drawable/btn_blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnYellow"
+        app:layout_constraintStart_toEndOf="@+id/btnRed"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -33,8 +33,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_red"
-        app:layout_constraintStart_toStartOf="@+id/btnYellow"
-        app:layout_constraintTop_toBottomOf="@+id/btnYellow"
+        app:layout_constraintStart_toStartOf="@+id/btnRed"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button

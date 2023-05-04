@@ -5,56 +5,140 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
+import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorEasyBinding
+import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
+import com.example.semestralnapraca_skvarna.view_model.SimonColorViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SimonColorEasyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SimonColorEasyFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentSimonColorEasyBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewModel: SimonColorViewModel
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_simon_color_easy, container, false)
+        _binding = FragmentSimonColorEasyBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[SimonColorViewModel::class.java]
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SimonColorEasyFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SimonColorEasyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setOnClickBtnRed()
+        setOnClickBtnBlue()
+        setOnClickBtnGreen()
+        setOnClickBackToMenu()
+
+        viewModel.pickRandomColorButton("easy")
+        coroutineScope.launch {
+            playSequence()
+        }
+    }
+
+    private fun game(pColorButtonNumber:Int) {
+        viewModel.addToUserSequence(pColorButtonNumber)
+        viewModel.addColorButtonsPressed()
+        if (viewModel.getColorButtonsPressed() == viewModel.getRound()) {
+            checkUserSequence()
+            if (viewModel.getIsSame()) {
+                viewModel.clearUserSequence()
+                sharedViewModel.addScore()
+                binding.tvScore.text = sharedViewModel.getScore().toString()
+                viewModel.setColorButtonsPressed(0)
+                viewModel.addRound()
+                viewModel.pickRandomColorButton("easy")
+                coroutineScope.launch {
+                    playSequence()
                 }
             }
+            else {
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+            }
+        }
+    }
+
+    private fun checkUserSequence() { //overenie stlačenia správneho tlačidla používateľom
+        for (index in 0 until viewModel.getGameSequence().size) {
+            if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index])
+                viewModel.setIsSame(false)
+        }
+    }
+
+    private suspend fun playSequence() {
+        binding.btnRed.isClickable = false
+        binding.btnBlue.isClickable = false
+        binding.btnGreen.isClickable = false
+        for (index in 0 until viewModel.getGameSequence().size) {
+            when (viewModel.getGameSequence()[index]) {
+                0 -> {
+                    delay(250)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red_pressed)
+                    delay(250)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red)
+                }
+                1 -> {
+                    delay(250)
+                    binding.btnBlue.setBackgroundResource(R.drawable.btn_blue_pressed)
+                    delay(250)
+                    binding.btnBlue.setBackgroundResource(R.drawable.btn_blue)
+                }
+                2 -> {
+                    delay(250)
+                    binding.btnGreen.setBackgroundResource(R.drawable.btn_green_pressed)
+                    delay(250)
+                    binding.btnGreen.setBackgroundResource(R.drawable.btn_green)
+                }
+            }
+        }
+        binding.btnRed.isClickable = true
+        binding.btnBlue.isClickable = true
+        binding.btnGreen.isClickable = true
+    }
+
+    private fun setOnClickBtnBlue() {
+        binding.btnRed.setOnClickListener() {
+            game(0)
+        }
+    }
+
+    private fun setOnClickBtnRed() {
+        binding.btnBlue.setOnClickListener() {
+            game(1)
+        }
+    }
+
+    private fun setOnClickBtnGreen() {
+        binding.btnGreen.setOnClickListener() {
+            game(2)
+        }
+    }
+
+    private fun setOnClickBackToMenu() {
+        binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

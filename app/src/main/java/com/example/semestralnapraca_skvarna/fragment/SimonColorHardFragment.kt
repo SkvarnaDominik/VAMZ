@@ -46,7 +46,7 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
         setOnClickBtnGreen()
         setOnClickBackToMenu()
 
-        viewModel.pickRandomColorButton()
+        viewModel.pickRandomColorButton("hard")
         coroutineScope.launch {
             playSequence()
         }
@@ -63,7 +63,7 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
                 binding.tvScore.text = sharedViewModel.getScore().toString()
                 viewModel.setColorButtonsPressed(0)
                 viewModel.addRound()
-                viewModel.pickRandomColorButton()
+                viewModel.pickRandomColorButton("hard")
                 coroutineScope.launch {
                     playSequence()
                 }
