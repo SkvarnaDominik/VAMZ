@@ -46,11 +46,19 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         setOnClickBtnGreen()
         setOnClickBackToMenu()
 
-        binding.tvSeconds.text = "3"
-        viewModel.startTimer(5)
+
+        timerSetup()
         displaySeconds()
         isFinished()
         gameSetup()
+    }
+
+    private fun timerSetup(){
+        if (sharedViewModel.getDifficulty().toString() == "easy") {
+          viewModel.startTimer(5)
+          return
+        }
+        viewModel.startTimer(3)
     }
 
     private fun gameSetup() {

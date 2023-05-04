@@ -47,6 +47,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
             sharedViewModel.resetScore()
+            sharedViewModel.setIsDifficultyChosen(false)
             Navigation.findNavController(binding.root).navigate(R.id.action_gameOverviewFragment_to_mainMenuFragment)
         }
     }

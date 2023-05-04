@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
-import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorBinding
+import com.example.semestralnapraca_skvarna.databinding.FragmentSimonColorHardBinding
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 import com.example.semestralnapraca_skvarna.view_model.SimonColorViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -17,9 +17,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
+class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
 
-    private var _binding: FragmentSimonColorBinding? = null
+    private var _binding: FragmentSimonColorHardBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: SimonColorViewModel
@@ -31,7 +31,7 @@ class SimonColorFragment : Fragment(R.layout.fragment_simon_color) {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentSimonColorBinding.inflate(inflater, container, false)
+        _binding = FragmentSimonColorHardBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[SimonColorViewModel::class.java]
 
         return binding.root

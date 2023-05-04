@@ -51,9 +51,13 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
 
     private fun isFinished() {
         viewModel.getIsFinished().observe(viewLifecycleOwner, Observer {
-            if (it && sharedViewModel.getGame().value == "SimonColor")
-                Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorFragment)
-            else
+            if (it && sharedViewModel.getGame().value == "SimonColor") {
+                if (sharedViewModel.getDifficulty().toString() == "easy")
+                    Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorHardFragment) //Tu ma byt easy
+                else
+                    Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorHardFragment)
+            }
+                else
                 Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_textColorFragment)
         })
     }

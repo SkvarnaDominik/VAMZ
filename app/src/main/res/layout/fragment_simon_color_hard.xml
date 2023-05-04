@@ -5,7 +5,7 @@
     android:id="@+id/simonColorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SimonColorFragment">
+    tools:context=".fragment.SimonColorHardFragment">
 
     <Button
         android:id="@+id/btnYellow"

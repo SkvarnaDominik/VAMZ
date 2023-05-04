@@ -15,6 +15,22 @@ class SharedViewModel : ViewModel() {
         game.value = pGame
     }
 
+    private var difficulty = MutableLiveData<String>()
+    fun getDifficulty(): LiveData<String> {
+        return difficulty
+    }
+    fun setDifficulty(pDifficulty:String) {
+        difficulty.value = pDifficulty
+    }
+
+    private var isDifficultyChosen: Boolean = false
+    fun getIsDifficultyChosen(): Boolean {
+        return isDifficultyChosen
+    }
+    fun setIsDifficultyChosen(pIsDifficultyChosen:Boolean) {
+        isDifficultyChosen = pIsDifficultyChosen
+    }
+
     //private var score = MutableLiveData<Int>()
     private var score: Int = 0
     fun getScore(): Int {
@@ -54,6 +70,12 @@ class SharedViewModel : ViewModel() {
     fun setNewUsername(pNewUsername:String) {
         username.value = pNewUsername
     }
+
+
+
+
+
+
 
     private var isDarkMode = MutableLiveData<Boolean>(true)
     fun getIsDarkMode(): Boolean {
