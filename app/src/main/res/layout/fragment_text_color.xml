@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnRed"
+        android:id="@+id/btnYellow"
         android:layout_width="165dp"
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
@@ -33,8 +33,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_red"
-        app:layout_constraintStart_toStartOf="@+id/btnRed"
-        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        app:layout_constraintStart_toStartOf="@+id/btnYellow"
+        app:layout_constraintTop_toBottomOf="@+id/btnYellow"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
