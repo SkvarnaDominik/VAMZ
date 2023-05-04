@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
@@ -38,7 +39,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
 
     private fun setOnClickEasy () {
         binding.btnEasy.setOnClickListener() {
-            sharedViewModel.setDifficulty("easy")
+            sharedViewModel.setDifficulty("Easy")
             sharedViewModel.setIsDifficultyChosen(true)
             binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_pressed)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal)
@@ -47,7 +48,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
 
     private fun setOnClickHard () {
         binding.btnHard.setOnClickListener() {
-            sharedViewModel.setDifficulty("hard")
+            sharedViewModel.setDifficulty("Hard")
             sharedViewModel.setIsDifficultyChosen(true)
             binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_normal)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed)
@@ -57,8 +58,10 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
     private fun setOnClickStart () {
         binding.btnStart.setOnClickListener() {
             if (sharedViewModel.getIsDifficultyChosen()) {
-                Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_countDownFragment)
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment)
             }
+            else
+                Toast.makeText(activity, "Nevybrali ste herný mód", Toast.LENGTH_SHORT).show()
         }
     }
 

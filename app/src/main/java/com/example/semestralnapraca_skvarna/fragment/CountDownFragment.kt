@@ -19,7 +19,7 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
 
     private var _binding: FragmentCountDownBinding? = null
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
-    private lateinit var viewModel: CountDownViewModel //prepojenie Settings s SettingsViewModel
+    private lateinit var viewModel: CountDownViewModel
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
     override fun onCreateView(
@@ -29,8 +29,7 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
         _binding = FragmentCountDownBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[CountDownViewModel::class.java]
 
-        //binding.seconds.text = sharedViewModel.getGame().value
-        viewModel.startTimer()
+        viewModel.startTimer(3)
         displaySeconds()
         isFinished()
 
@@ -52,8 +51,8 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
     private fun isFinished() {
         viewModel.getIsFinished().observe(viewLifecycleOwner, Observer {
             if (it && sharedViewModel.getGame().value == "SimonColor") {
-                if (sharedViewModel.getDifficulty().toString() == "easy")
-                    Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorHardFragment) //Tu ma byt easy
+                if (sharedViewModel.getDifficulty().value == "Easy")
+                    Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorEasyFragment)
                 else
                     Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorHardFragment)
             }

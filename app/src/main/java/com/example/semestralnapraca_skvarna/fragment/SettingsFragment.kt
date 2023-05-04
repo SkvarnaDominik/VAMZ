@@ -55,15 +55,15 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private fun changeUserName() {
         binding.btnChangeUserName.setOnClickListener() {
             if (binding.etUserName.text.toString().length > 10) {
-                Toast.makeText(activity, "Username can be long only 10 characters", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Meno nemôže obsahovať viac ako 10 písmen", Toast.LENGTH_SHORT).show()
             }
             else if (binding.etUserName.text.toString().isEmpty()) {
-                Toast.makeText(activity, "Username can't be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Meno nesmie byť prázdne", Toast.LENGTH_SHORT).show()
             }
             else {
                 sharedViewModel.setNewUsername(binding.etUserName.text.toString())
                 binding.tvUsername.text = sharedViewModel.getNewUsername()
-                Toast.makeText(activity, "Username was changed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Meno sa zmenilo", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -74,7 +74,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             if (sharedViewModel.getIndexOfProfilePicture() == sharedViewModel.getProfilePictureResources().size)
                 sharedViewModel.setIndexOfProfilePicture(0)
             binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
-            Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Fotka sa zmenila", Toast.LENGTH_SHORT).show()
         }
     }
 

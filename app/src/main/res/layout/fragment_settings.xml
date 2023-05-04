@@ -64,7 +64,7 @@
         android:layout_marginTop="20dp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
-        android:text="@string/michael_scott"
+        android:text="@string/username_placeholder"
         app:layout_constraintEnd_toEndOf="@+id/tvMenoNadpis"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMenoNadpis" />
@@ -73,6 +73,7 @@
         android:id="@+id/btnChangeUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_green"
         android:text="@string/change_user_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,4 +91,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swDarkMode" />
+
+    <TextView
+        android:id="@+id/tvClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePicture"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture" />
 </androidx.constraintlayout.widget.ConstraintLayout>

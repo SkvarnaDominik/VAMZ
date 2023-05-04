@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -38,7 +39,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
 
     private fun setOnClickEasy () {
         binding.btnEasy.setOnClickListener() {
-            sharedViewModel.setDifficulty("easy")
+            sharedViewModel.setDifficulty("Easy")
             sharedViewModel.setIsDifficultyChosen(true)
             binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_pressed)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal)
@@ -47,7 +48,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
 
     private fun setOnClickHard () {
         binding.btnHard.setOnClickListener() {
-            sharedViewModel.setDifficulty("hard")
+            sharedViewModel.setDifficulty("Hard")
             sharedViewModel.setIsDifficultyChosen(true)
             binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_normal)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed)
@@ -59,6 +60,8 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
             if (sharedViewModel.getIsDifficultyChosen()) {
                 Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_countDownFragment)
             }
+            else
+                Toast.makeText(activity, "Nevybrali ste herný mód", Toast.LENGTH_SHORT).show()
         }
     }
 

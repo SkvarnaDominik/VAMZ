@@ -19,8 +19,8 @@ class CountDownViewModel: ViewModel() {
         return seconds
     }
 
-    fun startTimer() {
-        timer = object : CountDownTimer(3000, 1000) {
+    fun startTimer(pInitSeconds: Int) {
+        timer = object : CountDownTimer((pInitSeconds * 1000).toLong(), 1000) {
             override fun onTick(p0: Long) {
                 val timeLeft = p0/1000
                 seconds.value = timeLeft.toInt()

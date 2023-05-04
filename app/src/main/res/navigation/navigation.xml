@@ -30,11 +30,11 @@
         android:label="fragment_simon_color"
         tools:layout="@layout/fragment_simon_color_hard" >
         <action
-            android:id="@+id/action_simonColorFragment_to_gameOverviewFragment"
-            app:destination="@id/gameOverviewFragment" />
-        <action
-            android:id="@+id/action_simonColorFragment_to_mainMenuFragment"
+            android:id="@+id/action_simonColorHardFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_simonColorHardFragment_to_gameOverviewFragment"
+            app:destination="@id/gameOverviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_countDownFragment_to_simonColorHardFragment"
             app:destination="@id/simonColorHardFragment" />
+        <action
+            android:id="@+id/action_countDownFragment_to_simonColorEasyFragment"
+            app:destination="@id/simonColorEasyFragment" />
     </fragment>
     <fragment
         android:id="@+id/textColorFragment"
@@ -101,5 +104,17 @@
         <action
             android:id="@+id/action_gameOverviewFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/simonColorEasyFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.SimonColorEasyFragment"
+        android:label="fragment_simon_color_easy"
+        tools:layout="@layout/fragment_simon_color_easy" >
+        <action
+            android:id="@+id/action_simonColorEasyFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_simonColorEasyFragment_to_gameOverviewFragment"
+            app:destination="@id/gameOverviewFragment" />
     </fragment>
 </navigation>

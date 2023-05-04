@@ -63,7 +63,7 @@ class SharedViewModel : ViewModel() {
         indexOfProfilePicture.value = pIndex
     }
 
-    private var username = MutableLiveData<String>("Template")
+    private var username = MutableLiveData<String>("**********")
     fun getNewUsername(): String {
         return username.value!!
     }

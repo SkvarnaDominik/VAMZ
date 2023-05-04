@@ -63,13 +63,13 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
                 binding.tvScore.text = sharedViewModel.getScore().toString()
                 viewModel.setColorButtonsPressed(0)
                 viewModel.addRound()
-                viewModel.pickRandomColorButton("easy")
+                viewModel.pickRandomColorButton("Easy")
                 coroutineScope.launch {
                     playSequence()
                 }
             }
             else {
-                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_gameOverviewFragment)
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_gameOverviewFragment)
             }
         }
     }
@@ -133,7 +133,7 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
             sharedViewModel.resetScore()
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_mainMenuFragment)
         }
     }
 

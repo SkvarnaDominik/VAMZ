@@ -59,7 +59,7 @@ class SimonColorViewModel : ViewModel() {
     }
 
     fun pickRandomColorButton(pMode:String) { //vygenerovanie náhodného čísla z rozsahu 0-3
-        if (pMode == "easy")
+        if (pMode == "Easy")
             addToGameSequence((0..3).random())
         else
             addToGameSequence((0..2).random())

@@ -54,7 +54,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun timerSetup(){
-        if (sharedViewModel.getDifficulty().toString() == "easy") {
+        if (sharedViewModel.getDifficulty().value == "Easy") {
           viewModel.startTimer(5)
           return
         }
@@ -100,28 +100,28 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         }
        else {
            when (viewModel.getTextColor()) {
-               "Žltá" -> {
+               "Yellow" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
                        if (viewModel.getColorButtons()[index].toString() == "2131165323") //Toto je (R.drawable.btn_yellow).toString()
                            return index
                    }
                }
 
-               "Modrá" -> {
+               "Blue" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
                        if (viewModel.getColorButtons()[index].toString() == "2131165306")
                            return index
                    }
                }
 
-               "Červená" -> {
+               "Red" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
                        if (viewModel.getColorButtons()[index].toString() == "2131165320")
                            return index
                    }
                }
 
-               "Zelená" -> {
+               "Green" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
                        if (viewModel.getColorButtons()[index].toString() == "2131165313")
                            return index
@@ -186,6 +186,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment)
         }
     }

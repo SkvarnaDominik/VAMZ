@@ -23,7 +23,7 @@ class TextColorViewModel: ViewModel() {
         return colorButtons
     }
 
-    private val textColors = arrayOf("Žltá", "Modrá", "Červená", "Zelená")
+    private val textColors = arrayOf("Yellow", "Blue", "Red", "Green")
     fun getTextColors(): Array<String> {
         return textColors
     }
@@ -40,7 +40,7 @@ class TextColorViewModel: ViewModel() {
         return color
     }
 
-    private val modes = arrayOf("Farba", "Text")
+    private val modes = arrayOf("Color", "Text")
     fun shuffleModes() {
         modes.shuffle()
     }
