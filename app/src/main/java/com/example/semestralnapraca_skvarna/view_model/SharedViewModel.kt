@@ -64,10 +64,10 @@ class SharedViewModel : ViewModel() {
     }
 
     private var username = MutableLiveData<String>("**********")
-    fun getNewUsername(): String {
+    fun getUsername(): String {
         return username.value!!
     }
-    fun setNewUsername(pNewUsername:String) {
+    fun setUsername(pNewUsername:String) {
         username.value = pNewUsername
     }
 

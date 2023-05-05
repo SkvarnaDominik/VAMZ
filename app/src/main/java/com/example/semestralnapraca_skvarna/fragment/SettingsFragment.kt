@@ -26,7 +26,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-        binding.tvUsername.text = sharedViewModel.getNewUsername()
+        binding.tvUsername.text = sharedViewModel.getUsername()
         binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
         return binding.root
     }
@@ -57,8 +57,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 Toast.makeText(activity, "Meno nesmie byť prázdne", Toast.LENGTH_SHORT).show()
             }
             else {
-                sharedViewModel.setNewUsername(binding.etUserName.text.toString())
-                binding.tvUsername.text = sharedViewModel.getNewUsername()
+                sharedViewModel.setUsername(binding.etUserName.text.toString())
+                binding.tvUsername.text = sharedViewModel.getUsername()
                 Toast.makeText(activity, "Meno sa zmenilo", Toast.LENGTH_SHORT).show()
             }
         }
