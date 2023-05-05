@@ -91,7 +91,7 @@
         android:id="@+id/scoreFragment"
         android:name="com.example.semestralnapraca_skvarna.fragment.ScoreFragment"
         android:label="fragment_score"
-        tools:layout="@layout/fragment_score" >
+        tools:layout="@layout/game_record" >
         <action
             android:id="@+id/action_scoreFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />

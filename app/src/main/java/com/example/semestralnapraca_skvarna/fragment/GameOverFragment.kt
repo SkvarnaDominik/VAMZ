@@ -49,6 +49,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         val score = sharedViewModel.getScore()
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
+
+        viewModel.addGameRecord(gameRecord)
     }
 
     private fun addScoreToFirebase() {

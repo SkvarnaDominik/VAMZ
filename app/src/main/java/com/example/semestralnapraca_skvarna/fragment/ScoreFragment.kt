@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentScoreBinding
 
-class ScoreFragment : Fragment(R.layout.fragment_score) {
+class ScoreFragment : Fragment(R.layout.game_record) {
 
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
