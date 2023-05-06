@@ -11,7 +11,6 @@ abstract class GameRecordDatabase : RoomDatabase() {
     abstract fun gameRecordDao(): GameRecordDao
 
     companion object {
-
     @Volatile
     private var INSTANCE: GameRecordDatabase? = null
 
@@ -21,11 +20,14 @@ abstract class GameRecordDatabase : RoomDatabase() {
             return tempInstance
         }
         synchronized(this) {
-            val instance = Room.databaseBuilder(context.applicationContext, GameRecordDatabase::class.java, "game_records").build()
+            val instance = Room.databaseBuilder(
+                context.applicationContext,
+                GameRecordDatabase::class.java,
+                "game_records"
+            ).build()
             INSTANCE = instance
             return instance
         }
     }
     }
-
 }

@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class GameRecordViewModel(application: Application): AndroidViewModel(application) {
 
-    private val getAllData: LiveData<List<GameRecord>>
+    val getAllData: LiveData<List<GameRecord>>
     private val repository: GameRecordRepository
 
 

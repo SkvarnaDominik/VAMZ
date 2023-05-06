@@ -13,14 +13,20 @@ import com.example.semestralnapraca_skvarna.database.GameRecord
 import com.example.semestralnapraca_skvarna.databinding.FragmentGameOverBinding
 import com.example.semestralnapraca_skvarna.view_model.GameRecordViewModel
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
     private var _binding: FragmentGameOverBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: GameRecordViewModel
+    //private lateinit var viewModel: GameRecordViewModel
     private val sharedViewModel: SharedViewModel by activityViewModels()
+
+    private lateinit var firebaseDatabaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +35,9 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         // Inflate the layout for this fragment
         _binding = FragmentGameOverBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
+       //viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
+
+        firebaseDatabaseReference = Firebase.database.reference
 
         return binding.root
     }
@@ -38,6 +46,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         super.onViewCreated(view, savedInstanceState)
 
         setOnClickBackToMenu()
+        addGameRecordToFirebase()
+        //addGameRecordToDatabase()
         binding.tvScore.text = sharedViewModel.getScore().toString()
     }
 
@@ -50,11 +60,20 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
 
-        viewModel.addGameRecord(gameRecord)
+        //viewModel.addGameRecord(gameRecord)
     }
 
-    private fun addScoreToFirebase() {
-        //dorob
+    private fun addGameRecordToFirebase() {
+        val profilePicture = sharedViewModel.getIndexOfProfilePicture()
+        val username = sharedViewModel.getUsername()
+        val game = sharedViewModel.getGame().toString()
+        val gameDifficulty = sharedViewModel.getDifficulty().toString()
+        val score = sharedViewModel.getScore()
+
+
+        val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
+
+        firebaseDatabaseReference.child("gameRecord").setValue(gameRecord)
     }
 
     private fun setOnClickBackToMenu() {
