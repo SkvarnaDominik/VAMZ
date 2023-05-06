@@ -48,10 +48,10 @@ class ScoreFragment : Fragment(R.layout.game_record) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setOnClickStart()
+        setOnClickBackToMenu()
     }
 
-    private fun setOnClickStart () {
+    private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
             Navigation.findNavController(binding.root).navigate(R.id.action_scoreFragment_to_mainMenuFragment)
         }

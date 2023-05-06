@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSettingsBinding
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
@@ -36,6 +37,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         setDarkLightMode(binding.root)
         changeUserName()
         changeProfilePicture()
+        setOnClickBackToMenu()
     }
 
     private fun setDarkLightMode(view: View) {
@@ -71,6 +73,12 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 sharedViewModel.setIndexOfProfilePicture(0)
             binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
             Toast.makeText(activity, "Fotka sa zmenila", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setOnClickBackToMenu() {
+        binding.btnBackToMenu.setOnClickListener() {
+            Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_mainMenuFragment)
         }
     }
 
