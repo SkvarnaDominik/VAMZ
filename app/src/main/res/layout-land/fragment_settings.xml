@@ -2,63 +2,112 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MainMenuFragment">
+    tools:context=".fragment.SettingsFragment">
 
-    <Button
-        android:id="@+id/btnScore"
-        android:layout_width="200dp"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swSound"
+        android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:background="@drawable/btn_blue"
-        android:text="@string/score"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSimonColor"
+        android:checked="true"
+        android:text="@string/sound"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSimonColor" />
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.659"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Button
-        android:id="@+id/btnSimonColor"
-        android:layout_width="200dp"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swDarkMode"
+        android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/btn_blue"
-        android:text="@string/simon_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        android:layout_marginTop="30dp"
+        android:checked="true"
+        android:text="@string/darkmode"
+        app:layout_constraintEnd_toEndOf="@+id/swSound"
+        app:layout_constraintStart_toStartOf="@+id/swSound"
+        app:layout_constraintTop_toBottomOf="@+id/swSound" />
+
+    <TextView
+        android:id="@+id/tvMenoNadpis"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="30dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnSettings"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/btn_blue"
-        android:text="@string/settings"
-        app:layout_constraintStart_toStartOf="@+id/btnScore"
-        app:layout_constraintTop_toBottomOf="@+id/btnScore" />
-
-    <Button
-        android:id="@+id/btnTextColor"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/btn_blue"
-        android:text="@string/text_color"
-        app:layout_constraintStart_toStartOf="@+id/btnSimonColor"
-        app:layout_constraintTop_toBottomOf="@+id/btnSimonColor" />
-
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="25dp"
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image" />
+        app:srcCompat="@drawable/kevin" />
 
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="@string/username_placeholder"
+        app:layout_constraintEnd_toEndOf="@+id/tvMenoNadpis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenoNadpis" />
+
+    <Button
+        android:id="@+id/btnChangeUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_green"
+        android:text="@string/change_user_name"
+        app:layout_constraintEnd_toEndOf="@+id/etUserName"
+        app:layout_constraintStart_toStartOf="@+id/etUserName"
+        app:layout_constraintTop_toBottomOf="@+id/etUserName" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="206dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+
+    <TextView
+        android:id="@+id/tvClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click"
+        app:layout_constraintEnd_toEndOf="@+id/ivProfilePicture"
+        app:layout_constraintStart_toStartOf="@+id/ivProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture" />
+
+
+    <Button
+        android:id="@+id/btnBackToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_green"
+        android:text="@string/main_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

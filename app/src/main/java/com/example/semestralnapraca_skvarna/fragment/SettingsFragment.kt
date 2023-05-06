@@ -34,10 +34,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setVariables()
         setDarkLightMode(binding.root)
         changeUserName()
         changeProfilePicture()
         setOnClickBackToMenu()
+    }
+
+    private fun setVariables() {
+        binding.tvUsername.text = sharedViewModel.getUsername()
+        binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
     }
 
     private fun setDarkLightMode(view: View) {
