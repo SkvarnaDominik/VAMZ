@@ -8,7 +8,7 @@
     <string name="_0">0</string>
     <string name="sound">Sound</string>
     <string name="darkmode">DarkMode</string>
-    <string name="username">Username</string>
+    <string name="username" translatable="false">Username</string>
     <string name="change_user_name">Change username</string>
     <string name="start">Start</string>
     <string name="easy">Easy</string>

@@ -12,7 +12,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) //obrazovka nikdy nezhasne
+
+        setContentView(binding.root)
+
     }
 }
