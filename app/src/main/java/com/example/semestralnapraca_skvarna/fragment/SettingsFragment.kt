@@ -39,6 +39,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         changeUserName()
         changeProfilePicture()
         setOnClickBackToMenu()
+
     }
 
     private fun setVariables() {
