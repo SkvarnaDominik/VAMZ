@@ -20,10 +20,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="411dp"
-        android:layout_height="652dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBackToMenu"
+        android:layout_width="413dp"
+        android:layout_height="656dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/game_record" />
 </androidx.constraintlayout.widget.ConstraintLayout>

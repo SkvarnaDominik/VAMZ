@@ -71,6 +71,10 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
     implementation "androidx.room:room-testing:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+
+    // RecycleView Components
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
 
     // Kotlin components
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0"

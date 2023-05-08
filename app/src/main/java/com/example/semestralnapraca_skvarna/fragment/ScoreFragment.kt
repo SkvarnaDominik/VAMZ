@@ -31,8 +31,7 @@ class ScoreFragment : Fragment(R.layout.game_record) {
         _binding = FragmentScoreBinding.inflate(inflater, container, false)
 
         adapter = ScoreAdapter()
-        recyclerView = binding.recyclerView
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]

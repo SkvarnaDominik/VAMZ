@@ -23,7 +23,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
     private var _binding: FragmentGameOverBinding? = null
     private val binding get() = _binding!!
 
-    //private lateinit var viewModel: GameRecordViewModel
+    private lateinit var viewModel: GameRecordViewModel
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var firebaseDatabaseReference: DatabaseReference
@@ -35,7 +35,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         // Inflate the layout for this fragment
         _binding = FragmentGameOverBinding.inflate(inflater, container, false)
 
-       //viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
+       viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
 
         firebaseDatabaseReference = Firebase.database.reference
 
@@ -47,7 +47,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         setOnClickBackToMenu()
         addGameRecordToFirebase()
-        //addGameRecordToDatabase()
+        addGameRecordToDatabase()
         binding.tvScore.text = sharedViewModel.getScore().toString()
     }
 
@@ -60,7 +60,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
 
-        //viewModel.addGameRecord(gameRecord)
+        viewModel.addGameRecord(gameRecord)
     }
 
     private fun addGameRecordToFirebase() {

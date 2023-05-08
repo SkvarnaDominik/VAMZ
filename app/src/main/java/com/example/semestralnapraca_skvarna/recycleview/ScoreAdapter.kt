@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.database.GameRecord
 
-class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.MyViewHolder>() {
+class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
 
-    private var gameRecordList = emptyList<GameRecord>()
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private var gameRecordList = listOf<GameRecord>()
+    class GameRecordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture)
         val username: TextView = itemView.findViewById(R.id.tvUsername)
         val game : TextView = itemView.findViewById(R.id.tvGame)
@@ -21,15 +21,15 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.MyViewHolder>() {
         val score: TextView = itemView.findViewById(R.id.tvScore)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameRecordViewHolder {
+        return GameRecordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record, parent, false))
     }
 
     override fun getItemCount(): Int {
         return gameRecordList.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GameRecordViewHolder, position: Int) {
         val currentItem = gameRecordList[position]
         holder.profilePicture.setImageResource(currentItem.profilePicture)
         holder.username.text = currentItem.username
