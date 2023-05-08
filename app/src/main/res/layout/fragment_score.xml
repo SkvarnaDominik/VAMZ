@@ -26,5 +26,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/game_record_row" />
+        tools:listitem="@layout/game_record" />
 </androidx.constraintlayout.widget.ConstraintLayout>

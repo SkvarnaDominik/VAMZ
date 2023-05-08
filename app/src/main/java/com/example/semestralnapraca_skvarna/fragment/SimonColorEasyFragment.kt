@@ -46,7 +46,7 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
         setOnClickBtnGreen()
         setOnClickBackToMenu()
 
-        viewModel.pickRandomColorButton("easy")
+        viewModel.pickRandomColorButton("Easy")
         coroutineScope.launch {
             playSequence()
         }

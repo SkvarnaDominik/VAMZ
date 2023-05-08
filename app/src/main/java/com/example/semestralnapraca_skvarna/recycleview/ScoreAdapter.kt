@@ -12,6 +12,13 @@ import com.example.semestralnapraca_skvarna.database.GameRecord
 
 class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
 
+    private val profilePictureResources: IntArray = intArrayOf(
+        R.drawable.michael,
+        R.drawable.dwight,
+        R.drawable.kevin,
+        R.drawable.image
+    )
+
     private var gameRecordList = listOf<GameRecord>()
     class GameRecordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture)
@@ -19,10 +26,11 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
         val game : TextView = itemView.findViewById(R.id.tvGame)
         val gameDifficulty: TextView = itemView.findViewById(R.id.tvGameDifficulty)
         val score: TextView = itemView.findViewById(R.id.tvScore)
+        //val scoreTitle: TextView = itemView.findViewById(R.id.tvScore_title)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameRecordViewHolder {
-        return GameRecordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record_row, parent, false))
+        return GameRecordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -31,11 +39,14 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
 
     override fun onBindViewHolder(holder: GameRecordViewHolder, position: Int) {
         val currentItem = gameRecordList[position]
-        holder.profilePicture.setImageResource(currentItem.profilePicture)
+        holder.profilePicture.setImageResource(profilePictureResources[currentItem.profilePicture])
+        holder.profilePicture.layoutParams.height = 300
+        holder.profilePicture.layoutParams.width = 300
         holder.username.text = currentItem.username
         holder.game.text = currentItem.game
         holder.gameDifficulty.text = currentItem.gameDifficulty
         holder.score.text = currentItem.score.toString()
+        //holder.scoreTitle.text = "Score"
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -29,7 +29,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
         // Inflate the layout for this fragment
         _binding = FragmentMainMenuBinding.inflate(inflater, container, false)
-        sharedViewModel.getGame().observe(viewLifecycleOwner) {}
+        sharedViewModel.getGameLiveData().observe(viewLifecycleOwner) {}
 
         return binding.root
     }
@@ -59,7 +59,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
             /*val direction = MainMenuFragmentDirections.actionMainMenuToCountDownFragment(0)
             findNavController().navigate(direction)*/
             sharedViewModel.setGame("SimonColor")
-            sharedViewModel.getGame().observe(viewLifecycleOwner,Observer{
+            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{
                Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_simonColorDifficultyFragment)
             })
         }
@@ -68,7 +68,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     private fun setOnClickTextColor () {
         binding.btnTextColor.setOnClickListener() {
             sharedViewModel.setGame("TextColor")
-            sharedViewModel.getGame().observe(viewLifecycleOwner,Observer{
+            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{
                 Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment)
             })
 

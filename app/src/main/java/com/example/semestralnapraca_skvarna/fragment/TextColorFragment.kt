@@ -54,7 +54,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun timerSetup(){
-        if (sharedViewModel.getDifficulty().value == "Easy") {
+        if (sharedViewModel.getDifficulty() == "Easy") {
           viewModel.startTimer(5)
           return
         }

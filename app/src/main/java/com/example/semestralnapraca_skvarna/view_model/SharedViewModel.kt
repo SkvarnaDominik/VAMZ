@@ -7,16 +7,22 @@ import com.example.semestralnapraca_skvarna.R
 
 class SharedViewModel : ViewModel() {
 
-    private var game = MutableLiveData<String>()
-    fun getGame(): LiveData<String> {
+    private var game = MutableLiveData<String>("SimonColor")
+    fun getGame(): String {
+        return game.value!!
+    }
+    fun getGameLiveData(): MutableLiveData<String> {
         return game
     }
     fun setGame(pGame:String) {
         game.value = pGame
     }
 
-    private var difficulty = MutableLiveData<String>()
-    fun getDifficulty(): LiveData<String> {
+    private var difficulty = MutableLiveData<String>("Easy")
+    fun getDifficulty(): String {
+        return difficulty.value!!
+    }
+    fun getDifficultyLiveData(): MutableLiveData<String> {
         return difficulty
     }
     fun setDifficulty(pDifficulty:String) {

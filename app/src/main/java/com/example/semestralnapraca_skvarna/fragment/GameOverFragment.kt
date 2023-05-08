@@ -54,8 +54,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
     private fun addGameRecordToDatabase() {
         val profilePicture = sharedViewModel.getIndexOfProfilePicture()
         val username = sharedViewModel.getUsername()
-        val game = sharedViewModel.getGame().toString()
-        val gameDifficulty = sharedViewModel.getDifficulty().toString()
+        val game = sharedViewModel.getGame()
+        val gameDifficulty = sharedViewModel.getDifficulty()
         val score = sharedViewModel.getScore()
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
@@ -66,8 +66,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
     private fun addGameRecordToFirebase() {
         val profilePicture = sharedViewModel.getIndexOfProfilePicture()
         val username = sharedViewModel.getUsername()
-        val game = sharedViewModel.getGame().value.toString()
-        val gameDifficulty = sharedViewModel.getDifficulty().value.toString()
+        val game = sharedViewModel.getGame()
+        val gameDifficulty = sharedViewModel.getDifficulty()
         val score = sharedViewModel.getScore()
 
 
