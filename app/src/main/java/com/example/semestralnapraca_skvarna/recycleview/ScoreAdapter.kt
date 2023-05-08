@@ -22,7 +22,7 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameRecordViewHolder {
-        return GameRecordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record, parent, false))
+        return GameRecordViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.game_record_row, parent, false))
     }
 
     override fun getItemCount(): Int {
