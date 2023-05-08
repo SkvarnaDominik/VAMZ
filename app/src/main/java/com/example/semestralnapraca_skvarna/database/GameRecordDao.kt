@@ -15,4 +15,7 @@ interface GameRecordDao {
     @Query("SELECT * FROM game_records ORDER BY id ASC")
     fun getAllData(): LiveData<List<GameRecord>>
 
+    @Query("DELETE FROM game_records ")
+    fun removeAllData()
+
 }

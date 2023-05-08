@@ -15,7 +15,7 @@ import com.example.semestralnapraca_skvarna.databinding.FragmentScoreBinding
 import com.example.semestralnapraca_skvarna.recycleview.ScoreAdapter
 import com.example.semestralnapraca_skvarna.view_model.GameRecordViewModel
 
-class ScoreFragment : Fragment(R.layout.game_record) {
+class ScoreFragment : Fragment(R.layout.game_record_row) {
 
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!! //binding pre lahsie pristupovanie
@@ -32,9 +32,12 @@ class ScoreFragment : Fragment(R.layout.game_record) {
 
         adapter = ScoreAdapter()
         binding.recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        //recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+
 
         viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
+        //viewModel.removeAllData()
         viewModel.getAllData.observe(viewLifecycleOwner, Observer { gameRecord ->
             adapter.setGameRecordData(gameRecord)
         })

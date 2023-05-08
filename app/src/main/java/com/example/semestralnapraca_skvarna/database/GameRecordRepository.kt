@@ -9,4 +9,8 @@ class GameRecordRepository(private val gameRecordDao: GameRecordDao) {
     suspend fun addGameRecord(gameRecord: GameRecord) {
         gameRecordDao.addGameRecord(gameRecord)
     }
+
+    suspend fun removeAllData() {
+        gameRecordDao.removeAllData()
+    }
 }

@@ -28,4 +28,10 @@ class GameRecordViewModel(application: Application): AndroidViewModel(applicatio
             repository.addGameRecord(gameRecord)
         }
     }
+
+    fun removeAllData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeAllData()
+        }
+    }
 }
