@@ -82,23 +82,23 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
 
      private fun checkUserSequence() { //overenie stlačenia správneho tlačidla používateľom
          for (index in 0 until viewModel.getGameSequence().size) {
-             if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index])
-                 viewModel.setIsSame(false)
+             if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index]) //Porovnávanie sekvencie hry a sekvencie vstupov použivateľa
+                 viewModel.setIsSame(false) //Pri nerovnosti sa nastavý flag isSame na nepravdu
          }
      }
 
-    private suspend fun playSequence() {
-        binding.btnYellow.isClickable = false
+    private suspend fun playSequence() { //Metóda pre zobrazenie postupnoti výberu tlačidiel
+        binding.btnYellow.isClickable = false //Znemožnenie stlačenie tlačidla, kým sa zobrazuje postupnosť tlačidiel
         binding.btnBlue.isClickable = false
         binding.btnRed.isClickable = false
         binding.btnGreen.isClickable = false
         for (index in 0 until viewModel.getGameSequence().size) {
-            when (viewModel.getGameSequence()[index]) {
+            when (viewModel.getGameSequence()[index]) { //switch pre vybrané tlačidla
                 0 -> {
+                    delay(250) //čakanie 250ms
+                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow_pressed) //Nastavenie pozadia tlačidla na tmavšie, čím sa značí jeho výber v postupnosti použivateľovi
                     delay(250)
-                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow_pressed)
-                    delay(250)
-                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow)
+                    binding.btnYellow.setBackgroundResource(R.drawable.btn_yellow) //Nastavenie pozadia tlačidla na pôvodnú hodnotu
                 }
                 1 -> {
                     delay(250)
@@ -120,45 +120,39 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
                 }
             }
         }
-        binding.btnYellow.isClickable = true
+        binding.btnYellow.isClickable = true //Opätovné sfunkčnenie stlačnia tlačidla
         binding.btnBlue.isClickable = true
         binding.btnRed.isClickable = true
         binding.btnGreen.isClickable = true
     }
 
-    private fun setOnClickBtnYellow() {
+    private fun setOnClickBtnYellow() { //ClickListener pre stlačenie tlačidla
         binding.btnYellow.setOnClickListener() {
-           game(0, )
+           game(0) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBtnBlue() {
+    private fun setOnClickBtnBlue() { //ClickListener pre stlačenie tlačidla
         binding.btnBlue.setOnClickListener() {
-           game(1)
+           game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBtnRed() {
+    private fun setOnClickBtnRed() { //ClickListener pre stlačenie tlačidla
         binding.btnRed.setOnClickListener() {
-            game(2)
+            game(2) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBtnGreen() {
+    private fun setOnClickBtnGreen() { //ClickListener pre stlačenie tlačidla
         binding.btnGreen.setOnClickListener() {
-            game(3)
+            game(3) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBackToMenu() {
+    private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
-            sharedViewModel.resetScore()
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorHardFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorHardFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

@@ -80,22 +80,22 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
 
     private fun checkUserSequence() { //overenie stlačenia správneho tlačidla používateľom
         for (index in 0 until viewModel.getGameSequence().size) {
-            if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index])
-                viewModel.setIsSame(false)
+            if (viewModel.getGameSequence()[index] != viewModel.getUserSequence()[index]) //Porovnávanie sekvencie hry a sekvencie vstupov použivateľa
+                viewModel.setIsSame(false) //Pri nerovnosti sa nastavý flag isSame na nepravdu
         }
     }
 
-    private suspend fun playSequence() {
-        binding.btnRed.isClickable = false
+    private suspend fun playSequence() { //Metóda pre zobrazenie postupnoti výberu tlačidiel
+        binding.btnRed.isClickable = false //Znemožnenie stlačenie tlačidla, kým sa zobrazuje postupnosť tlačidiel
         binding.btnBlue.isClickable = false
         binding.btnGreen.isClickable = false
         for (index in 0 until viewModel.getGameSequence().size) {
-            when (viewModel.getGameSequence()[index]) {
+            when (viewModel.getGameSequence()[index]) { //switch pre vybrané tlačidla
                 0 -> {
                     delay(250)
-                    binding.btnRed.setBackgroundResource(R.drawable.btn_red_pressed)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red_pressed) //Nastavenie pozadia tlačidla na tmavšie, čím sa značí jeho výber v postupnosti použivateľovi
                     delay(250)
-                    binding.btnRed.setBackgroundResource(R.drawable.btn_red)
+                    binding.btnRed.setBackgroundResource(R.drawable.btn_red) //Nastavenie pozadia tlačidla na pôvodnú hodnotu
                 }
                 1 -> {
                     delay(250)
@@ -111,38 +111,32 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
                 }
             }
         }
-        binding.btnRed.isClickable = true
+        binding.btnRed.isClickable = true //Opätovné sfunkčnenie stlačnia tlačidla
         binding.btnBlue.isClickable = true
         binding.btnGreen.isClickable = true
     }
 
-    private fun setOnClickBtnBlue() {
+    private fun setOnClickBtnBlue() { //ClickListener pre stlačenie tlačidla
         binding.btnRed.setOnClickListener() {
-            game(0)
+            game(0) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBtnRed() {
+    private fun setOnClickBtnRed() { //ClickListener pre stlačenie tlačidla
         binding.btnBlue.setOnClickListener() {
-            game(1)
+            game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBtnGreen() {
+    private fun setOnClickBtnGreen() { //ClickListener pre stlačenie tlačidla
         binding.btnGreen.setOnClickListener() {
-            game(2)
+            game(2) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
-    private fun setOnClickBackToMenu() {
+    private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
-            sharedViewModel.resetScore()
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
