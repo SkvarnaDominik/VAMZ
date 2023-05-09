@@ -90,6 +90,10 @@
             android:id="@+id/action_simonColorDifficultyFragment_to_countDownFragment"
             app:destination="@id/countDownFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_simonColorDifficultyFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/textColorDifficultyFragment"
@@ -98,6 +102,10 @@
         <action
             android:id="@+id/action_textColorDifficultyFragment_to_countDownFragment"
             app:destination="@id/countDownFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_textColorDifficultyFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment

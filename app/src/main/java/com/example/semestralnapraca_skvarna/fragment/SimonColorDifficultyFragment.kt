@@ -35,6 +35,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         setOnClickEasy()
         setOnClickHard()
         setOnClickStart()
+        setOnClickBackToMenu()
     }
 
     private fun setOnClickEasy () {
@@ -63,6 +64,13 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
             }
             else
                 Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setOnClickBackToMenu() {
+        binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore()
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_mainMenuFragment)
         }
     }
 

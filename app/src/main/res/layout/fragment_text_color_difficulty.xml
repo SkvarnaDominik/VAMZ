@@ -68,7 +68,15 @@
         android:background="@drawable/btn_green"
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/btnHard" />
+
+    <Button
+        android:id="@+id/btnBackToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_green"
+        android:text="@string/main_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
+        app:layout_constraintEnd_toEndOf="@+id/btnEasy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

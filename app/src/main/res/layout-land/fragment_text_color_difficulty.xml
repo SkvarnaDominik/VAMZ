@@ -66,7 +66,15 @@
         android:background="@drawable/btn_green"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="@+id/btnHard"
-        app:layout_constraintEnd_toEndOf="@+id/tvRules"
+        app:layout_constraintEnd_toEndOf="@+id/tvRules" />
+
+    <Button
+        android:id="@+id/btnBackToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_green"
+        android:text="@string/main_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
         app:layout_constraintStart_toStartOf="@+id/tvRules" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
