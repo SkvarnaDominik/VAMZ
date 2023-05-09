@@ -41,7 +41,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         binding.btnEasy.setOnClickListener() {
             sharedViewModel.setDifficulty("Easy")
             sharedViewModel.setIsDifficultyChosen(true)
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_pressed)
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal)
         }
     }
@@ -50,7 +50,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         binding.btnHard.setOnClickListener() {
             sharedViewModel.setDifficulty("Hard")
             sharedViewModel.setIsDifficultyChosen(true)
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_blue_normal)
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal)
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed)
         }
     }

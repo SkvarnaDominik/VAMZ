@@ -1,5 +1,6 @@
 package com.example.semestralnapraca_skvarna.fragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -44,6 +45,21 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
 
     private fun displaySeconds() {
         viewModel.getSeconds().observe(viewLifecycleOwner, Observer {
+            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                when (it) {
+                    2 -> binding.root.setBackgroundResource(R.drawable.green3)
+                    1 -> binding.root.setBackgroundResource(R.drawable.blue2)
+                    0 -> binding.root.setBackgroundResource(R.drawable.red1)
+                }
+            }
+            else {
+                when (it) {
+                    2 -> binding.root.setBackgroundResource(R.drawable.green3_land)
+                    1 -> binding.root.setBackgroundResource(R.drawable.blue2_land)
+                    0 -> binding.root.setBackgroundResource(R.drawable.red1_land)
+                }
+            }
+
             binding.tvSeconds.text = (it.inc()  ).toString()
         })
     }

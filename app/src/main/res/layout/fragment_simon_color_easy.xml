@@ -5,7 +5,8 @@
     android:id="@+id/simonColorEasyLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SimonColorEasyFragment">
+    tools:context=".fragment.SimonColorEasyFragment"
+    android:background="@drawable/dark_blue">
 
     <Button
         android:id="@+id/btnRed"

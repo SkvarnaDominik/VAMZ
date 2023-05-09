@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@drawable/btn_blue"
+        android:background="@drawable/btn_dark_blue"
         android:text="@string/easy"
         app:layout_constraintEnd_toEndOf="@+id/ivEasy"
         app:layout_constraintStart_toStartOf="@+id/ivEasy"

@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/simonColorDifficultyLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/blue2">
 
     <ImageView
         android:id="@+id/ivEasy"
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/btn_blue"
+        android:background="@drawable/btn_dark_blue"
         android:text="@string/easy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivEasy"
