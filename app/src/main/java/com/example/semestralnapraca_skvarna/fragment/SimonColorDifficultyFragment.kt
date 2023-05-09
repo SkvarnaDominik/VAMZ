@@ -41,8 +41,8 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         binding.btnEasy.setOnClickListener() {
             sharedViewModel.setDifficulty("Easy") //Nastavenie obtiažnosti na Easy v zdiaľanom viewModel-y
             sharedViewModel.setIsDifficultyChosen(true) //Nastavenie Flag-u či bola vybraná obtiažnosť na pravdu
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
-            binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
+            binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
         }
     }
 
@@ -50,14 +50,14 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         binding.btnHard.setOnClickListener() {
             sharedViewModel.setDifficulty("Hard") //Nastavenie obtiažnosti na Hard v zdiaľanom viewModel-y
             sharedViewModel.setIsDifficultyChosen(true) //Nastavenie Flag-u či bola vybraná obtiažnosť na pravdu
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
-            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
+            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
         }
     }
 
     private fun setOnClickStart () { //ClickListener pre stlačenie tlačidla
         binding.btnStart.setOnClickListener() {
-            if (sharedViewModel.getIsDifficultyChosen()) { //Podmienka pre zistenie vybrania obtiažnosti
+            if (sharedViewModel.getIsDifficultyChosen()) { //Podmienka pre zistenie či bola vybraná obtiažnosť
                 sharedViewModel.setIsFirstRound(true) //Nastavenie flag-u či sa jedná o prvé kolo na pravdu
                 Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment) //Navigovanie sa na fragment CountDownFragment
             }
