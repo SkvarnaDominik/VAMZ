@@ -18,10 +18,10 @@ import com.example.semestralnapraca_skvarna.view_model.TextColorViewModel
 class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private var _binding: FragmentTextColorBinding? = null
-    private val binding get() = _binding!! //binding pre lahsie pristupovanie
+    private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
 
-    private lateinit var viewModel: TextColorViewModel
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var viewModel: TextColorViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
+    private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -30,15 +30,15 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
         _binding = FragmentCountDownBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[CountDownViewModel::class.java]
 
-        viewModel.startTimer(3) //Spustenie Timer-u
-        displaySeconds() //Zobrazenie sekúnd
-        isFinished() //Kontrola skončenia Timer-u
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.startTimer(3) //Spustenie Timer-u
+        displaySeconds() //Zobrazenie sekúnd
+        isFinished() //Kontrola skončenia Timer-u
 
     }
 
@@ -72,7 +72,7 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
                     Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_simonColorHardFragment) //Navigovanie sa na fragment SimonColorHardFragment
             }
                 else
-                Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_textColorFragment) //navigovanie sa na fragment TextColorFragment
+                Navigation.findNavController(binding.root).navigate(R.id.action_countDownFragment_to_textColorFragment) //Navigovanie sa na fragment TextColorFragment
         })
     }
 }

@@ -20,10 +20,10 @@ import kotlinx.coroutines.launch
 class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
 
     private var _binding: FragmentSimonColorEasyBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
 
-    private lateinit var viewModel: SimonColorViewModel
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var viewModel: SimonColorViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
+    private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 

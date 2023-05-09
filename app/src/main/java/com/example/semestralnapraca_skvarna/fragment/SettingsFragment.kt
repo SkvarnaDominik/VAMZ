@@ -18,8 +18,8 @@ import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private var _binding: FragmentSettingsBinding? = null
-    private val binding get() = _binding!! //binding pre lahsie pristupovanie
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
+    private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
