@@ -1,7 +1,5 @@
 package com.example.semestralnapraca_skvarna.fragment
 
-
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +26,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     ): View {
 
         // Inflate the layout for this fragment
-        _binding = FragmentMainMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentMainMenuBinding.inflate(inflater, container, false) //Nastavenie hodnôt premenným
         sharedViewModel.getGameLiveData().observe(viewLifecycleOwner) {}
 
         return binding.root
@@ -36,60 +34,43 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setOnClickSimonColor()
+
+        setOnClickSimonColor() //ClickListener pre stlačenie tlačidla
         setOnClickTextColor()
         setOnClickScore()
         setOnClickSettings()
-
     }
 
-    private fun setOnClickSimonColor () {
+    private fun setOnClickSimonColor () { //ClickListener pre stlačenie tlačidla
         binding.btnSimonColor.setOnClickListener() {
-            /*val bundle = Bundle()
-            bundle.putString("destination", "SimonColor")
-            val fragment = CountDownFragment()
-            fragment.arguments = bundle*/
-
-            //val action = MainMenuFragmentDirections.actionMainMenuToCountDownFragment("SimonColor")
-            //parentFragmentManager.beginTransaction().apply { replace(R.id.mainMenuLayout, CountDownFragment()).commit() }
-            /*findNavController().navigate(R.id.action_mainMenu_to_countDownFragment, Bundle().apply {
-               putString("destination", "SimonColor")
-            })*/
-
-            /*val direction = MainMenuFragmentDirections.actionMainMenuToCountDownFragment(0)
-            findNavController().navigate(direction)*/
-            sharedViewModel.setGame("SimonColor")
-            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{
-               Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_simonColorDifficultyFragment)
+            sharedViewModel.setGame("SimonColor") //Nastavenie herného módu na SimonColor
+            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
+                                                                                            //vykoná sa telo Observer-a
+               Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_simonColorDifficultyFragment) //Navigovanie sa na Fragment SimonColorDifficultyFragment
             })
         }
     }
 
-    private fun setOnClickTextColor () {
+    private fun setOnClickTextColor () { //ClickListener pre stlačenie tlačidla
         binding.btnTextColor.setOnClickListener() {
-            sharedViewModel.setGame("TextColor")
-            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{
-                Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment)
+            sharedViewModel.setGame("TextColor") //Nastavenie herného módu na Text/Color
+            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{ //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
+                //vykoná sa telo Observer-a
+                Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment) //Navigovanie sa na Fragment TextColorDifficultyFragment
             })
-
         }
     }
 
-    private fun setOnClickScore () {
+    private fun setOnClickScore () { //ClickListener pre stlačenie tlačidla
         binding.btnScore.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_scoreFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_scoreFragment) //Navigovanie sa na fragment ScoreFragment
         }
     }
 
-    private fun setOnClickSettings () {
+    private fun setOnClickSettings () { //ClickListener pre stlačenie tlačidla
         binding.btnSettings.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenu_to_settings)
+            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenu_to_settings) //Navigovanie sa na fragment SettingsFragment
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
 
