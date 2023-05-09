@@ -19,7 +19,7 @@ import com.google.firebase.ktx.Firebase
 class ScoreFragment : Fragment(R.layout.game_record) {
 
     private var _binding: FragmentScoreBinding? = null
-    private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
+    private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layout-u (TextView, Button, ImageView)
     private lateinit var viewModel: GameRecordViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
 
     private lateinit var adapter : ScoreAdapter
