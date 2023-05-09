@@ -149,45 +149,44 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun displaySeconds() { //Zobrazenie sekúnd
-        viewModel.getSeconds().observe(viewLifecycleOwner, Observer {
-            binding.tvSeconds.text = (it.inc()  ).toString()
+        viewModel.getSeconds().observe(viewLifecycleOwner, Observer { //Observer sleduje liveData. Pokiaľ sa dáta zmenia vykoná svoje telo
+            binding.tvSeconds.text = (it.inc()  ).toString() //Vypísanie sekúnd do textView tvSeconds
         })
     }
 
     private fun isFinished() { //Kontrola skončenia Timer-u
         viewModel.getIsFinished().observe(viewLifecycleOwner, Observer {
-            Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_gameOverviewFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_gameOverviewFragment) //Navigovanie sa do fragmentu GameOverViewFragment
         })
     }
 
    private fun setOnClickBtnYellow() { //ClickListener pre stlačenie tlačidla
         binding.btnYellow.setOnClickListener() {
-           game(0 )
+           game(0 ) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnBlue() { //ClickListener pre stlačenie tlačidla
         binding.btnBlue.setOnClickListener() {
-           game(1)
+           game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnRed() { //ClickListener pre stlačenie tlačidla
         binding.btnRed.setOnClickListener() {
-            game(2)
+            game(2) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnGreen() { //ClickListener pre stlačenie tlačidla
         binding.btnGreen.setOnClickListener() {
-            game(3)
+            game(3) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
-            sharedViewModel.resetScore()
-            Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu GameOverViewFragment
         }
     }
 }
