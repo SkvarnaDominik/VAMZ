@@ -1,34 +1,25 @@
 package com.example.semestralnapraca_skvarna.view_model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SimonColorViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprístupňuje ich danému/daným fragmentom
 
-    //private var round = MutableLiveData<Int>(1)
     private var round: Int = 1
     fun getRound(): Int {
-        //return round.value!!
         return round
     }
     fun addRound() {
-        //round.postValue(round.value!! + 1)
         round += 1
     }
 
-    //private var colorButtonsPressed = MutableLiveData<Int>(0)
     private var colorButtonsPressed: Int = 0
     fun getColorButtonsPressed(): Int {
-        //return colorButtonsPressed.value!!
         return colorButtonsPressed
     }
     fun addColorButtonsPressed() {
-        //colorButtonsPressed.postValue(colorButtonsPressed.value!! + 1)
         colorButtonsPressed += 1
     }
     fun setColorButtonsPressed(pNumberPressed:Int) {
-        //colorButtonsPressed.postValue(pNumberPressed)
         colorButtonsPressed = pNumberPressed
     }
 
@@ -42,20 +33,12 @@ class SimonColorViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a s
         return userSequence
     }
 
-    //private var isSame = MutableLiveData<Boolean>(true)
     private var isSame:Boolean = true
     fun getIsSame(): Boolean {
-      //  return isSame.value!!
         return isSame
     }
     fun setIsSame(pIsSame:Boolean) {
-        //isSame.postValue(pIsSame)
         isSame = pIsSame
-    }
-
-    private var colorButton = MutableLiveData<Int>()
-    fun getColorButton(): LiveData<Int> {
-        return colorButton
     }
 
     fun pickRandomColorButton(pMode:String) { //vygenerovanie náhodného čísla z rozsahu 0-3

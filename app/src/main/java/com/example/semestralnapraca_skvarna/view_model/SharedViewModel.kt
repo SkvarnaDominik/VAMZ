@@ -1,6 +1,5 @@
 package com.example.semestralnapraca_skvarna.view_model
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.semestralnapraca_skvarna.R
@@ -15,7 +14,7 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         isFirstRound = pIsFirstRound
     }
 
-    private var game = MutableLiveData<String>("SimonColor")
+    private var game = MutableLiveData("SimonColor")
     fun getGame(): String {
         return game.value!!
     }
@@ -26,13 +25,11 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         game.value = pGame
     }
 
-    private var difficulty = MutableLiveData<String>("Easy")
+    private var difficulty = MutableLiveData("Easy")
     fun getDifficulty(): String {
         return difficulty.value!!
     }
-    fun getDifficultyLiveData(): MutableLiveData<String> {
-        return difficulty
-    }
+
     fun setDifficulty(pDifficulty:String) {
         difficulty.value = pDifficulty
     }
@@ -45,14 +42,11 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         isDifficultyChosen = pIsDifficultyChosen
     }
 
-    //private var score = MutableLiveData<Int>()
     private var score: Int = 0
     fun getScore(): Int {
-        //return score.value!!
         return score
     }
     fun addScore() {
-        //score.postValue(score.value!! + 1)
         score += 1
     }
     fun resetScore() {
@@ -69,7 +63,7 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         return profilePictureResources
     }
 
-    private var indexOfProfilePicture = MutableLiveData<Int>(0)
+    private var indexOfProfilePicture = MutableLiveData(0)
     fun getIndexOfProfilePicture(): Int {
         return indexOfProfilePicture.value!!
     }
@@ -77,25 +71,11 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         indexOfProfilePicture.value = pIndex
     }
 
-    private var username = MutableLiveData<String>("**********")
+    private var username = MutableLiveData("**********")
     fun getUsername(): String {
         return username.value!!
     }
     fun setUsername(pNewUsername:String) {
         username.value = pNewUsername
-    }
-
-
-
-
-
-
-
-    private var isDarkMode = MutableLiveData<Boolean>(true)
-    fun getIsDarkMode(): Boolean {
-        return isDarkMode.value!!
-    }
-    fun setIsDarkMode(pIsDarkMode:Boolean) {
-        isDarkMode.value = pIsDarkMode
     }
 }

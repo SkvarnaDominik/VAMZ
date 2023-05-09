@@ -109,7 +109,7 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
                "Blue" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
-                       if (viewModel.getColorButtons()[index].toString() == "2131165309") //Toto je (R.drawable.btn_blue).toString()
+                       if (viewModel.getColorButtons()[index].toString() == "2131165308") //Toto je (R.drawable.btn_blue).toString()
                            return index
                    }
                }

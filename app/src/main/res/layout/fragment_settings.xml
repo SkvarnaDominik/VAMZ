@@ -7,30 +7,6 @@
     tools:context=".fragment.SettingsFragment"
     android:background="@drawable/dark_blue">
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swSound"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:checked="true"
-        android:text="@string/sound"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swDarkMode"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/darkmode"
-        android:checked="true"
-        app:layout_constraintStart_toStartOf="@+id/swSound"
-        app:layout_constraintTop_toBottomOf="@+id/swSound"/>
-
     <TextView
         android:id="@+id/tvMenoNadpis"
         android:layout_width="150dp"
@@ -49,12 +25,13 @@
         android:layout_height="170dp"
         android:layout_marginTop="48dp"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toEndOf="@+id/tvMenoNadpis"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile_1"
-        android:focusable="true" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -73,24 +50,25 @@
         android:id="@+id/btnChangeUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btn_green"
         android:text="@string/change_user_name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swDarkMode" />
+        app:layout_constraintTop_toBottomOf="@+id/etUserName" />
 
     <EditText
         android:id="@+id/etUserName"
         android:layout_width="206dp"
         android:layout_height="76dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/btnChangeUserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swDarkMode" />
+        app:layout_constraintTop_toBottomOf="@+id/tvClick"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvClick"
@@ -105,10 +83,10 @@
         android:id="@+id/btnBackToMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/btn_green"
         android:text="@string/main_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnChangeUserName"
-        app:layout_constraintStart_toStartOf="@+id/btnChangeUserName"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangeUserName" />
+        app:layout_constraintStart_toStartOf="@+id/btnChangeUserName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
