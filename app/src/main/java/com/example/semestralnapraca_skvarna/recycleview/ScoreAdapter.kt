@@ -14,10 +14,10 @@ import com.example.semestralnapraca_skvarna.database.GameRecord
 class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
 
     private val profilePictureResources: IntArray = intArrayOf(
-        R.drawable.michael,
-        R.drawable.dwight,
-        R.drawable.kevin,
-        R.drawable.image
+        R.drawable.profile_1,
+        R.drawable.profile_2,
+        R.drawable.profile_3,
+        R.drawable.profile_4
     )
 
     private var gameRecordList = listOf<GameRecord>()

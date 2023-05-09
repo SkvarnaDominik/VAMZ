@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SettingsFragment">
+    tools:context=".fragment.SettingsFragment"
+    android:background="@drawable/dark_blue">
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/swSound"

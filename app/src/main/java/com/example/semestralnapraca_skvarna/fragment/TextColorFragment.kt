@@ -103,28 +103,28 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
            when (viewModel.getTextColor()) {
                "Yellow" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
-                       if (viewModel.getColorButtons()[index].toString() == "2131165323") //Toto je (R.drawable.btn_yellow).toString()
+                       if (viewModel.getColorButtons()[index].toString() == "2131165328") //Toto je (R.drawable.btn_yellow).toString()
                            return index
                    }
                }
 
                "Blue" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
-                       if (viewModel.getColorButtons()[index].toString() == "2131165306")
+                       if (viewModel.getColorButtons()[index].toString() == "2131165309")
                            return index
                    }
                }
 
                "Red" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
-                       if (viewModel.getColorButtons()[index].toString() == "2131165320")
+                       if (viewModel.getColorButtons()[index].toString() == "2131165325")
                            return index
                    }
                }
 
                "Green" -> {
                    for (index in 0 until viewModel.getColorButtons().size) {
-                       if (viewModel.getColorButtons()[index].toString() == "2131165313")
+                       if (viewModel.getColorButtons()[index].toString() == "2131165318")
                            return index
                    }
                }

@@ -5,7 +5,8 @@
     android:id="@+id/gameOverLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.GameOverFragment">
+    tools:context=".fragment.GameOverFragment"
+    android:background="@drawable/main_menu">
 
     <TextView
         android:id="@+id/tvScore_title"

@@ -61,7 +61,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
                 Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_countDownFragment)
             }
             else
-                Toast.makeText(activity, "Nevybrali ste herný mód", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT).show()
         }
     }
 

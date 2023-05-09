@@ -5,8 +5,8 @@
     android:id="@+id/mainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_menu"
-    tools:context=".fragment.MainMenuFragment">
+    tools:context=".fragment.MainMenuFragment"
+    android:background="@drawable/main_menu">
 
     <Button
         android:id="@+id/btnScore"
@@ -22,12 +22,12 @@
         android:id="@+id/btnSimonColor"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/simon_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSettings"
@@ -48,15 +48,5 @@
         android:text="@string/text_color"
         app:layout_constraintStart_toStartOf="@+id/btnSimonColor"
         app:layout_constraintTop_toBottomOf="@+id/btnSimonColor" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

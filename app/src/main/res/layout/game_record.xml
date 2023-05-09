@@ -4,25 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gameRecordLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".fragment.ScoreFragment">
+    android:layout_height="135dp"
+    tools:context=".fragment.ScoreFragment"
+    android:background="@drawable/score">
 
     <ImageView
         android:id="@+id/ivProfilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="left"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicture"
         app:layout_constraintTop_toTopOf="@+id/ivProfilePicture" />
@@ -32,6 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/tvUsername"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
@@ -41,6 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/tvGame"
         app:layout_constraintStart_toEndOf="@+id/tvGame" />
@@ -50,6 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/tvGameDifficulty"
         app:layout_constraintStart_toEndOf="@+id/tvGameDifficulty" />
