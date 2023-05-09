@@ -54,8 +54,8 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     private fun setOnClickTextColor () { //ClickListener pre stlačenie tlačidla
         binding.btnTextColor.setOnClickListener() {
             sharedViewModel.setGame("TextColor") //Nastavenie herného módu na Text/Color
-            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{ //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
-                //vykoná sa telo Observer-a
+            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
+                                                                                            //vykoná sa telo Observer-a
                 Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment) //Navigovanie sa na Fragment TextColorDifficultyFragment
             })
         }
