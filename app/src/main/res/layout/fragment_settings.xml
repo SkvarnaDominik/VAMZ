@@ -53,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toEndOf="@+id/tvMenoNadpis"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/kevin"
+        app:srcCompat="@drawable/profile_1"
         android:focusable="true" />
 
     <TextView

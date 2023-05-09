@@ -14,7 +14,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/textcoloreasy" />
+        app:srcCompat="@drawable/text_color_easy" />
 
     <ImageView
         android:id="@+id/ivHard"
@@ -24,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivEasy"
         app:layout_constraintTop_toTopOf="@+id/ivEasy"
-        app:srcCompat="@drawable/textcolorhard" />
+        app:srcCompat="@drawable/text_color_hard" />
 
     <TextView
         android:id="@+id/tvRules"

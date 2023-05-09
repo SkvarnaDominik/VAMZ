@@ -16,7 +16,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/simoncoloreasy" />
+        app:srcCompat="@drawable/simon_color_easy" />
 
     <ImageView
         android:id="@+id/ivHard"
@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivEasy"
         app:layout_constraintTop_toTopOf="@+id/ivEasy"
-        app:srcCompat="@drawable/simoncolorhard" />
+        app:srcCompat="@drawable/simon_color_hard" />
 
     <TextView
         android:id="@+id/tvRules"
