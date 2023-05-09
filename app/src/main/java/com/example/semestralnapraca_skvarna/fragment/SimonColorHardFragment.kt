@@ -25,7 +25,8 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
     private lateinit var viewModel: SimonColorViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val coroutineScope = CoroutineScope(Dispatchers.IO) //Korutina pre spustenie danej metódy v ďalšom vlákne mimo behu hlavného kódu
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,42 +42,40 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        if (sharedViewModel.getIsFirstRound()) {
-            viewModel.pickRandomColorButton("Hard")
-            coroutineScope.launch {
-                playSequence()
+        if (sharedViewModel.getIsFirstRound()) { //Podmienka pre zistenie či sa jedná o prvé kolo
+            viewModel.pickRandomColorButton("Hard") //Metóda pre výber náhodného tlačidla
+            coroutineScope.launch { //Spustenie metódy v inom vlákne ako beží hlavný kód
+                playSequence() //Metóda pre zobrazenie postupnoti výberu tlačidiel
             }
         }
 
-        setOnClickBtnYellow()
+        setOnClickBtnYellow() //ClickListener pre stlačenie tlačidla
         setOnClickBtnBlue()
         setOnClickBtnRed()
         setOnClickBtnGreen()
         setOnClickBackToMenu()
-        binding.tvScore.text = sharedViewModel.getScore().toString()
 
-        sharedViewModel.setIsFirstRound(false)
-
+        sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či bola vybraná obtiažnosť na nepravdu
     }
 
-    private fun game(pColorButtonNumber:Int) {
-        viewModel.addToUserSequence(pColorButtonNumber)
-        viewModel.addColorButtonsPressed()
-        if (viewModel.getColorButtonsPressed() == viewModel.getRound()) {
-            checkUserSequence()
-            if (viewModel.getIsSame()) {
-                viewModel.clearUserSequence()
-                sharedViewModel.addScore()
-                binding.tvScore.text = sharedViewModel.getScore().toString()
-                viewModel.setColorButtonsPressed(0)
-                viewModel.addRound()
-                viewModel.pickRandomColorButton("Hard")
-                coroutineScope.launch {
-                    playSequence()
+    private fun game(pColorButtonNumber:Int) { //Metóda logiky hry
+        viewModel.addToUserSequence(pColorButtonNumber) //Metóda pre pridanie tlačidla, ktoré stlačil použivateľ do postupnoti vstupov použivateľa
+        viewModel.addColorButtonsPressed() //Navýšenie premennej počtu vstupov, ktoré používateľ zadal
+        if (viewModel.getColorButtonsPressed() == viewModel.getRound()) { //Podmienka, ktorá vráti pravdu, ak používateľ zadal toľko vstupov, koľké je kolo
+            checkUserSequence() //Metóda pre zistenie, či sa sekvencia vstupov od použivateľa rovná sekvencií vybraných tlačidiel počas hry
+            if (viewModel.getIsSame()) { //Podmienka, ktorá vráti pravdu, ak sa tieto sekvencie rovnajú
+                viewModel.clearUserSequence() //Vyčistenie sekvencie používateľa
+                sharedViewModel.addScore() //Navýšenie skóre
+                binding.tvScore.text = sharedViewModel.getScore().toString() //Výpis skóre do textView tvScore
+                viewModel.setColorButtonsPressed(0)  //Zresetovanie počítadla inputov od používateľa
+                viewModel.addRound() //Pridanie kola
+                viewModel.pickRandomColorButton("Hard")  //Metóda pre výber náhodného tlačidla
+                coroutineScope.launch { //Spustenie metódy v inom vlákne ako beží hlavný kód
+                    playSequence() //Metóda pre zobrazenie postupnoti výberu tlačidiel
                 }
             }
             else {
-                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorHardFragment_to_gameOverviewFragment)
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorHardFragment_to_gameOverviewFragment) //Navigovanie sa do fragmentu GameOvewviewFragment
             }
         }
     }

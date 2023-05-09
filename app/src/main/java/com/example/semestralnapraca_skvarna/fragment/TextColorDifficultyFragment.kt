@@ -48,7 +48,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
     private fun setOnClickHard () { //ClickListener pre stlačenie tlačidla
         binding.btnHard.setOnClickListener() {
             sharedViewModel.setDifficulty("Hard") //Nastavenie obtiažnosti na Hard v zdiaľanom viewModel-y
-            sharedViewModel.setIsDifficultyChosen(true) //Nastavenie Flag-u či bola vybraná obtiažnosť na pravdu
+            sharedViewModel.setIsDifficultyChosen(true) //Nastavenie flag-u či bola vybraná obtiažnosť na pravdu
             binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
             binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
         }
