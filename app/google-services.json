@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789031099769",
+    "project_id": "colorfun-2e065",
+    "storage_bucket": "colorfun-2e065.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789031099769:android:fb7050c17fbfbf97a563a8",
+        "android_client_info": {
+          "package_name": "com.example.semestralnapraca_skvarna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789031099769-3sagqfoev20d3gvlorj9t2gi13l6m1p6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHLHcmtUU1Eiw6GrikSDnLaLJPTnUwVaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789031099769-3sagqfoev20d3gvlorj9t2gi13l6m1p6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
