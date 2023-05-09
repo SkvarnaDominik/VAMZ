@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -44,21 +45,25 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     private fun setOnClickSimonColor () { //ClickListener pre stlačenie tlačidla
         binding.btnSimonColor.setOnClickListener() {
             sharedViewModel.setGame("SimonColor") //Nastavenie herného módu na SimonColor
-            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
-                                                                                            //vykoná sa telo Observer-a
-               Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_simonColorDifficultyFragment) //Navigovanie sa na Fragment SimonColorDifficultyFragment
-            })
+            sharedViewModel.getGameLiveData().observe(
+                viewLifecycleOwner,
+                Observer {  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
+                                   //vykoná sa telo Observer-a
+                    Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_simonColorDifficultyFragment) //Navigovanie sa na Fragment SimonColorDifficultyFragment
+                })
         }
     }
 
     private fun setOnClickTextColor () { //ClickListener pre stlačenie tlačidla
         binding.btnTextColor.setOnClickListener() {
-            sharedViewModel.setGame("TextColor") //Nastavenie herného módu na Text/Color
-            sharedViewModel.getGameLiveData().observe(viewLifecycleOwner,Observer{  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
-                                                                                            //vykoná sa telo Observer-a
-                Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment) //Navigovanie sa na Fragment TextColorDifficultyFragment
-            })
-        }
+                sharedViewModel.setGame("TextColor") //Nastavenie herného módu na Text/Color
+                sharedViewModel.getGameLiveData().observe(
+                    viewLifecycleOwner,
+                    Observer {  //Sledovanie zmeny premennej Game, ktorá vyjadruje herný mód, ak sa jej hodnota zmenila
+                                       //vykoná sa telo Observer-a
+                        Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_textColorDifficultyFragment) //Navigovanie sa na Fragment TextColorDifficultyFragment
+                    })
+            }
     }
 
     private fun setOnClickScore () { //ClickListener pre stlačenie tlačidla

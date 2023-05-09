@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.semestralnapraca_skvarna.database.GameRecord
-import com.example.semestralnapraca_skvarna.database.GameRecordDao
 import com.example.semestralnapraca_skvarna.database.GameRecordDatabase
 import com.example.semestralnapraca_skvarna.database.GameRecordRepository
 import kotlinx.coroutines.Dispatchers

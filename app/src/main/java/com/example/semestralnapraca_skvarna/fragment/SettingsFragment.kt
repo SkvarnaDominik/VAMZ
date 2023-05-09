@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentSettingsBinding
+import com.example.semestralnapraca_skvarna.view_model.GameRecordViewModel
 import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 
 
@@ -17,6 +19,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
+
+    private lateinit var viewModel: GameRecordViewModel
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     override fun onCreateView(
@@ -25,7 +29,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-        binding.tvUsername.text = sharedViewModel.getUsername()
+        viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
         return binding.root
     }
 
