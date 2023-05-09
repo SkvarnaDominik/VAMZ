@@ -3,7 +3,7 @@ package com.example.semestralnapraca_skvarna.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "game_records")
+@Entity(tableName = "game_records")    // Dátová trieda, ktorá reprezentuje jeden záznam odohrania hry
 data class GameRecord (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
