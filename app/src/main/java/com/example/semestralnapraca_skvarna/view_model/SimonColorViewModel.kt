@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SimonColorViewModel : ViewModel() {
+class SimonColorViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprístupňuje ich danému/daným fragmentom
 
     //private var round = MutableLiveData<Int>(1)
     private var round: Int = 1

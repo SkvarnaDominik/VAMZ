@@ -11,11 +11,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater) //Nastavenie hodnôt premenným
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) //obrazovka nikdy nezhasne
 
-        setContentView(binding.root)
-
+        setContentView(binding.root) //Nastavenie contentView na binding.root (activity_main.xml)
     }
 }

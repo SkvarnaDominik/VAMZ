@@ -11,7 +11,7 @@ import com.example.semestralnapraca_skvarna.database.GameRecordRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class GameRecordViewModel(application: Application): AndroidViewModel(application) {
+class GameRecordViewModel(application: Application): AndroidViewModel(application) { //Trieda, ktorá pracuje s dátami a sprístupňuje ich danému/daným fragmentom
 
     val getAllData: LiveData<List<GameRecord>>
     private val repository: GameRecordRepository

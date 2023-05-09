@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.semestralnapraca_skvarna.R
 
-class SharedViewModel : ViewModel() {
+class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprístupňuje ich danému/daným fragmentom
 
     private var isFirstRound: Boolean =true
     fun getIsFirstRound(): Boolean {

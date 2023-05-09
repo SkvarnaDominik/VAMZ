@@ -13,17 +13,17 @@ import com.example.semestralnapraca_skvarna.database.GameRecord
 
 class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
 
-    private val profilePictureResources: IntArray = intArrayOf(
+    private val profilePictureResources: IntArray = intArrayOf( //Pole profilových obrázkov
         R.drawable.profile_1,
         R.drawable.profile_2,
         R.drawable.profile_3,
         R.drawable.profile_4
     )
 
-    private var gameRecordList = listOf<GameRecord>()
+    private var gameRecordList = listOf<GameRecord>() //List záznamov o hrách (GameRecord)
 
     class GameRecordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture)
+        val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture) //Priradenie textView a imageView premenným
         val username: TextView = itemView.findViewById(R.id.tvUsername)
         val game : TextView = itemView.findViewById(R.id.tvGame)
         val gameDifficulty: TextView = itemView.findViewById(R.id.tvGameDifficulty)
@@ -35,12 +35,12 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return gameRecordList.size
+        return gameRecordList.size //Vrátenie veľkosti listu
     }
 
     override fun onBindViewHolder(holder: GameRecordViewHolder, position: Int) {
         val currentItem = gameRecordList[position]
-        holder.profilePicture.setImageResource(profilePictureResources[currentItem.profilePicture])
+        holder.profilePicture.setImageResource(profilePictureResources[currentItem.profilePicture]) //Nastavenie premenných
         holder.profilePicture.layoutParams.height = 300
         holder.profilePicture.layoutParams.width = 300
         holder.username.text = currentItem.username
