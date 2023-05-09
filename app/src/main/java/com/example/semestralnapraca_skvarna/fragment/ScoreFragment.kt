@@ -1,18 +1,25 @@
 package com.example.semestralnapraca_skvarna.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.RecyclerView
 import com.example.semestralnapraca_skvarna.R
+import com.example.semestralnapraca_skvarna.database.GameRecord
 import com.example.semestralnapraca_skvarna.databinding.FragmentScoreBinding
 import com.example.semestralnapraca_skvarna.recycleview.ScoreAdapter
 import com.example.semestralnapraca_skvarna.view_model.GameRecordViewModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class ScoreFragment : Fragment(R.layout.game_record) {
 
@@ -21,7 +28,10 @@ class ScoreFragment : Fragment(R.layout.game_record) {
     private lateinit var viewModel: GameRecordViewModel
 
     private lateinit var adapter : ScoreAdapter
-    private lateinit var recyclerView: RecyclerView
+
+    private lateinit var firebaseDatabaseReference: DatabaseReference
+    private lateinit var firebaseDatabase: FirebaseDatabase
+    //private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,20 +41,38 @@ class ScoreFragment : Fragment(R.layout.game_record) {
 
         adapter = ScoreAdapter()
         binding.recyclerView.adapter = adapter
-        //recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-
 
         viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
         //viewModel.removeAllData()
-        viewModel.getAllData.observe(viewLifecycleOwner, Observer { gameRecord ->
+        viewModel.getAllData.observe(viewLifecycleOwner) { gameRecord ->
             adapter.setGameRecordData(gameRecord)
-        })
+        }
+
+        firebaseDatabaseReference = Firebase.database.reference
+        firebaseDatabase = FirebaseDatabase.getInstance()
 
 
-
+        //readFirebaseData()
         return binding.root
     }
+
+    /*private fun readFirebaseData() {
+        var gameRecordList = ArrayList<GameRecord>()
+
+        firebaseDatabaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (dataSnapshot: DataSnapshot in snapshot.children) {
+                    var gameRecord = dataSnapshot.getValue(GameRecord::class.java)
+                    gameRecordList.add(gameRecord!!)
+                }
+                Log.e("data", "onDataChange$snapshot")
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

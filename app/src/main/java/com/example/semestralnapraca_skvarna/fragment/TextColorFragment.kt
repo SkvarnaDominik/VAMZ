@@ -40,12 +40,14 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         binding.btnBlue.setTextColor(Color.BLACK)
         binding.btnRed.setTextColor(Color.BLACK)
         binding.btnGreen.setTextColor(Color.BLACK)
+
+        binding.tvScore.text = sharedViewModel.getScore().toString()
+
         setOnClickBtnYellow()
         setOnClickBtnBlue()
         setOnClickBtnRed()
         setOnClickBtnGreen()
         setOnClickBackToMenu()
-
 
         timerSetup()
         displaySeconds()
@@ -62,7 +64,6 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     }
 
     private fun gameSetup() {
-        var string:String = viewModel.getTextColors()[0].toString()
         viewModel.shuffleModes()
         viewModel.setMode(viewModel.getModes()[0])
         binding.tvMode.text = viewModel.getMode()

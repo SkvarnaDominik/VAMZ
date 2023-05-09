@@ -5,6 +5,7 @@
     android:id="@+id/mainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/skuska"
     tools:context=".fragment.MainMenuFragment">
 
     <Button
@@ -21,12 +22,12 @@
         android:id="@+id/btnSimonColor"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/btn_blue"
         android:text="@string/simon_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btnSettings"
@@ -52,7 +53,7 @@
         android:id="@+id/imageView"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSimonColor"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

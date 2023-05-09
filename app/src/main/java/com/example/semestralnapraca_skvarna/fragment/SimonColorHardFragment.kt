@@ -40,16 +40,23 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        if (sharedViewModel.getIsFirstRound()) {
+            viewModel.pickRandomColorButton("Hard")
+            coroutineScope.launch {
+                playSequence()
+            }
+        }
+
         setOnClickBtnYellow()
         setOnClickBtnBlue()
         setOnClickBtnRed()
         setOnClickBtnGreen()
         setOnClickBackToMenu()
+        binding.tvScore.text = sharedViewModel.getScore().toString()
 
-        viewModel.pickRandomColorButton("hard")
-        coroutineScope.launch {
-            playSequence()
-        }
+        sharedViewModel.setIsFirstRound(false)
+
     }
 
     private fun game(pColorButtonNumber:Int) {

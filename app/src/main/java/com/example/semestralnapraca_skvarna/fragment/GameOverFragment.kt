@@ -35,7 +35,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         // Inflate the layout for this fragment
         _binding = FragmentGameOverBinding.inflate(inflater, container, false)
 
-       viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
+        viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
 
         firebaseDatabaseReference = Firebase.database.reference
 
@@ -73,13 +73,14 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score)
 
-        firebaseDatabaseReference.child("gameRecord").push().setValue(gameRecord)
+        firebaseDatabaseReference.child("gameRecord").child(username).setValue(gameRecord)
     }
 
     private fun setOnClickBackToMenu() {
         binding.btnBackToMenu.setOnClickListener() {
             sharedViewModel.resetScore()
             sharedViewModel.setIsDifficultyChosen(false)
+            sharedViewModel.setIsFirstRound(false)
             Navigation.findNavController(binding.root).navigate(R.id.action_gameOverviewFragment_to_mainMenuFragment)
         }
     }

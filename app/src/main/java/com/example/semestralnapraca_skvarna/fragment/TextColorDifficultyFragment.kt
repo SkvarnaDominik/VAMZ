@@ -57,6 +57,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
     private fun setOnClickStart () {
         binding.btnStart.setOnClickListener() {
             if (sharedViewModel.getIsDifficultyChosen()) {
+                sharedViewModel.setIsFirstRound(true)
                 Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_countDownFragment)
             }
             else

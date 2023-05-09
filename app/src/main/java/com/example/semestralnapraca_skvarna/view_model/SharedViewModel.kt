@@ -7,6 +7,14 @@ import com.example.semestralnapraca_skvarna.R
 
 class SharedViewModel : ViewModel() {
 
+    private var isFirstRound: Boolean =true
+    fun getIsFirstRound(): Boolean {
+        return isFirstRound
+    }
+    fun setIsFirstRound(pIsFirstRound:Boolean) {
+        isFirstRound = pIsFirstRound
+    }
+
     private var game = MutableLiveData<String>("SimonColor")
     fun getGame(): String {
         return game.value!!

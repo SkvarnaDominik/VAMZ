@@ -88,7 +88,11 @@ class TextColorViewModel: ViewModel() {
         return seconds
     }
 
+    private var isTicking: Boolean = false
+
     fun startTimer(pInitSeconds: Int) {
+        if (isTicking)
+            return
         timer = object : CountDownTimer((pInitSeconds * 1000).toLong(), 1000) {
             override fun onTick(p0: Long) {
                 val timeLeft = p0/1000
@@ -99,6 +103,7 @@ class TextColorViewModel: ViewModel() {
                 isFinished.value = true
             }
         }.start()
+        isTicking = true
     }
 
     fun restartTimer() {

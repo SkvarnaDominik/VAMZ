@@ -1,6 +1,7 @@
 package com.example.semestralnapraca_skvarna.recycleview
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,13 +21,13 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
     )
 
     private var gameRecordList = listOf<GameRecord>()
+
     class GameRecordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture)
         val username: TextView = itemView.findViewById(R.id.tvUsername)
         val game : TextView = itemView.findViewById(R.id.tvGame)
         val gameDifficulty: TextView = itemView.findViewById(R.id.tvGameDifficulty)
         val score: TextView = itemView.findViewById(R.id.tvScore)
-        //val scoreTitle: TextView = itemView.findViewById(R.id.tvScore_title)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameRecordViewHolder {
@@ -46,7 +47,6 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
         holder.game.text = currentItem.game
         holder.gameDifficulty.text = currentItem.gameDifficulty
         holder.score.text = currentItem.score.toString()
-        //holder.scoreTitle.text = "Score"
     }
 
     @SuppressLint("NotifyDataSetChanged")

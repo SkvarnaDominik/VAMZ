@@ -41,15 +41,23 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (sharedViewModel.getIsFirstRound()) {
+            viewModel.pickRandomColorButton("Easy")
+            coroutineScope.launch {
+                playSequence()
+            }
+        }
+
         setOnClickBtnRed()
         setOnClickBtnBlue()
         setOnClickBtnGreen()
         setOnClickBackToMenu()
+        binding.tvScore.text = sharedViewModel.getScore().toString()
 
-        viewModel.pickRandomColorButton("Easy")
-        coroutineScope.launch {
-            playSequence()
-        }
+        sharedViewModel.setIsFirstRound(false)
+
+
+
     }
 
     private fun game(pColorButtonNumber:Int) {
