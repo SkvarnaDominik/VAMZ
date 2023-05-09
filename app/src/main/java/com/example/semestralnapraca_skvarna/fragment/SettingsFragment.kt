@@ -28,36 +28,26 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
         binding.tvUsername.text = sharedViewModel.getUsername()
-        binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setVariables()
-        setDarkLightMode(binding.root)
-        changeUserName()
-        changeProfilePicture()
-        setOnClickBackToMenu()
+        setVariables() //Metóda slúžiaca na nastavenie mena profilovej fotografie užívateľa pri vytvorení fragmentu
+        changeUserName() //Metóda pre zmenu mena používateľa
+        changeProfilePicture() //Metóda pre zmenu profilovej fotografie používateľa
+        setOnClickBackToMenu() //ClickListener pre stlačenie tlačidla
 
     }
 
     private fun setVariables() {
-        binding.tvUsername.text = sharedViewModel.getUsername()
-        binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
+        binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()]) //Nastavenie profilovej fotky
+                                                                                                                                            //do imageView ivProfilePicture
+                                                                                                                                            //pri vytvorení fragmentu
+        binding.tvUsername.text = sharedViewModel.getUsername() //Nastavenie mena užívateľa do textView tvUsername pri vytvorení fragmentu
     }
 
-    private fun setDarkLightMode(view: View) {
-        binding.swDarkMode.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView: CompoundButton, isChecked: Boolean ->
-            if (binding.swDarkMode.isChecked && sharedViewModel.getIsDarkMode()) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        })
-    }
-
-    private fun changeUserName() {
+    private fun changeUserName() { //Metóda pre zmenu mena používateľa
         binding.btnChangeUserName.setOnClickListener() {
             if (binding.etUserName.text.toString().length > 10) {
                 Toast.makeText(activity, "Username cannot be longer than 10 characters", Toast.LENGTH_SHORT).show()
@@ -83,9 +73,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
     }
 
-    private fun setOnClickBackToMenu() {
+    private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainMenuFragment
         }
     }
 

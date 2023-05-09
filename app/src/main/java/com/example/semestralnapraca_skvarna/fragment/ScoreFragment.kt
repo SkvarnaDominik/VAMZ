@@ -22,7 +22,7 @@ class ScoreFragment : Fragment(R.layout.game_record) {
     private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layout-u (TextView, Button, ImageView)
     private lateinit var viewModel: GameRecordViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
 
-    private lateinit var adapter : ScoreAdapter
+    private lateinit var adapter : ScoreAdapter //Slúži na spracovanie dát tak, aby s nimi mohol ďalej precovať recyclerView
 
     private lateinit var firebaseDatabaseReference: DatabaseReference //Referencia na firebase databázu, do ktorej sa zálohujú záznamy (GameRecord) o odohraných hrách
     private lateinit var firebaseDatabase: FirebaseDatabase //Inštancia firebase databázy pre prístup k jej obsahu a jeho získaniu
@@ -34,7 +34,7 @@ class ScoreFragment : Fragment(R.layout.game_record) {
         _binding = FragmentScoreBinding.inflate(inflater, container, false) //Nastavenie hodnôt premenným
 
         adapter = ScoreAdapter()
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter //Priradenie adaptéra k recyclerView
 
         viewModel = ViewModelProvider(this)[GameRecordViewModel::class.java]
 
