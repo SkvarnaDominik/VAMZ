@@ -23,7 +23,7 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSimonColorDifficultyBinding.inflate(inflater, container, false)
+        _binding = FragmentSimonColorDifficultyBinding.inflate(inflater, container, false) //Nastavenie hodnôt premenným
 
         return binding.root
     }
@@ -31,51 +31,44 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.setIsDifficultyChosen(false)
-        setOnClickEasy()
+        setOnClickEasy() //ClickListener pre stlačenie tlačidla
         setOnClickHard()
         setOnClickStart()
         setOnClickBackToMenu()
     }
 
-    private fun setOnClickEasy () {
+    private fun setOnClickEasy () { //ClickListener pre stlačenie tlačidla
         binding.btnEasy.setOnClickListener() {
-            sharedViewModel.setDifficulty("Easy")
-            sharedViewModel.setIsDifficultyChosen(true)
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed)
-            binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal)
+            sharedViewModel.setDifficulty("Easy") //Nastavenie obtiažnosti na Easy v zdiaľanom viewModel-y
+            sharedViewModel.setIsDifficultyChosen(true) //Nastavenie Flag-u či bola vybraná obtiažnosť na pravdu
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
+            binding.btnHard.setBackgroundResource(R.drawable.btn_red_normal) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
         }
     }
 
-    private fun setOnClickHard () {
+    private fun setOnClickHard () { //ClickListener pre stlačenie tlačidla
         binding.btnHard.setOnClickListener() {
-            sharedViewModel.setDifficulty("Hard")
-            sharedViewModel.setIsDifficultyChosen(true)
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal)
-            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed)
+            sharedViewModel.setDifficulty("Hard") //Nastavenie obtiažnosti na Hard v zdiaľanom viewModel-y
+            sharedViewModel.setIsDifficultyChosen(true) //Nastavenie Flag-u či bola vybraná obtiažnosť na pravdu
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_normal) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
+            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa výberu obtiažnosti
         }
     }
 
-    private fun setOnClickStart () {
+    private fun setOnClickStart () { //ClickListener pre stlačenie tlačidla
         binding.btnStart.setOnClickListener() {
-            if (sharedViewModel.getIsDifficultyChosen()) {
-                sharedViewModel.setIsFirstRound(true)
-                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment)
+            if (sharedViewModel.getIsDifficultyChosen()) { //Podmienka pre zistenie vybrania obtiažnosti
+                sharedViewModel.setIsFirstRound(true) //Nastavenie flag-u či sa jedná o prvé kolo na pravdu
+                Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment) //Navigovanie sa na fragment CountDownFragment
             }
             else
-                Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
         }
     }
 
-    private fun setOnClickBackToMenu() {
+    private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
-            sharedViewModel.resetScore()
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_mainMenuFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainManuFragment
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

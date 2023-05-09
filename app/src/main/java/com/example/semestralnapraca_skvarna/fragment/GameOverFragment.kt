@@ -80,7 +80,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         binding.btnBackToMenu.setOnClickListener() {
             sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
             sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
-            sharedViewModel.setIsFirstRound(false) //Nastavenie Boolean-u či sa jedná o prvé kolo na nepravdu
+            sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
             Navigation.findNavController(binding.root).navigate(R.id.action_gameOverviewFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainMenuFragment
         }
     }
