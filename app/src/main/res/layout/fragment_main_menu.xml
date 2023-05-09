@@ -5,7 +5,7 @@
     android:id="@+id/mainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/skuska"
+    android:background="@drawable/main_menu"
     tools:context=".fragment.MainMenuFragment">
 
     <Button
