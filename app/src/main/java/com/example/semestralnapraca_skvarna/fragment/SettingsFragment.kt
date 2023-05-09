@@ -49,27 +49,27 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private fun changeUserName() { //Metóda pre zmenu mena používateľa
         binding.btnChangeUserName.setOnClickListener() {
-            if (binding.etUserName.text.toString().length > 10) {
-                Toast.makeText(activity, "Username cannot be longer than 10 characters", Toast.LENGTH_SHORT).show()
+            if (binding.etUserName.text.toString().length > 10) { //Podmienka pre dĺžku mena použivateľa
+                Toast.makeText(activity, "Username cannot be longer than 10 characters", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             }
-            else if (binding.etUserName.text.toString().isEmpty()) {
-                Toast.makeText(activity, "Username cannot be empty", Toast.LENGTH_SHORT).show()
+            else if (binding.etUserName.text.toString().isEmpty()) { //Podmienka pre dĺžku mena použivateľa
+                Toast.makeText(activity, "Username cannot be empty", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             }
             else {
-                sharedViewModel.setUsername(binding.etUserName.text.toString())
-                binding.tvUsername.text = sharedViewModel.getUsername()
-                Toast.makeText(activity, "Username was changed", Toast.LENGTH_SHORT).show()
+                sharedViewModel.setUsername(binding.etUserName.text.toString()) //Nastavenie mena používateľa v zdieľanom viewModel-y
+                binding.tvUsername.text = sharedViewModel.getUsername() //Výpis mena používateľa do textView tvUsername
+                Toast.makeText(activity, "Username was changed", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             }
         }
     }
 
-    private fun changeProfilePicture() {
+    private fun changeProfilePicture() { //Metóda pre zmenu profilovej fotografie používateľa
         binding.ivProfilePicture.setOnClickListener {
-            sharedViewModel.setIndexOfProfilePicture(sharedViewModel.getIndexOfProfilePicture() + 1)
-            if (sharedViewModel.getIndexOfProfilePicture() == sharedViewModel.getProfilePictureResources().size)
-                sharedViewModel.setIndexOfProfilePicture(0)
-            binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()])
-            Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show()
+            sharedViewModel.setIndexOfProfilePicture(sharedViewModel.getIndexOfProfilePicture() + 1) //Nastavenie profilovej fotografie používateľa v zdieľanom viewModel-y
+            if (sharedViewModel.getIndexOfProfilePicture() == sharedViewModel.getProfilePictureResources().size) //Podmienka pre zistenie konca poľa
+                sharedViewModel.setIndexOfProfilePicture(0) //Nastavenie indexu na 0
+            binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()]) //Výpis fotografie do imageView ivProfilePicture
+            Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
         }
     }
 
@@ -77,10 +77,5 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.btnBackToMenu.setOnClickListener() {
             Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainMenuFragment
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
