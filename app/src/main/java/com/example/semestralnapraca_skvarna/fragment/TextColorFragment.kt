@@ -36,6 +36,8 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tvScore.text = sharedViewModel.getScore().toString() //Výpis skóre do textView tvScore
+
         binding.btnYellow.setTextColor(Color.BLACK) //Nastavenie farby textu v textView
         binding.btnBlue.setTextColor(Color.BLACK)
         binding.btnRed.setTextColor(Color.BLACK)
@@ -186,6 +188,9 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
+            sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
+            sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu GameOverViewFragment
         }
     }

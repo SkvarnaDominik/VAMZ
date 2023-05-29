@@ -41,6 +41,7 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tvScore.text = sharedViewModel.getScore().toString() //Výpis skóre do textView tvScore
 
         if (sharedViewModel.getIsFirstRound()) { //Podmienka pre zistenie či sa jedná o prvé kolo
             viewModel.pickRandomColorButton("Hard") //Metóda pre výber náhodného tlačidla
@@ -152,6 +153,9 @@ class SimonColorHardFragment : Fragment(R.layout.fragment_simon_color_hard) {
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
+            sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
+            sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorHardFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
     }

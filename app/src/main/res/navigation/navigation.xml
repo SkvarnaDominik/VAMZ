@@ -23,9 +23,8 @@
             app:destination="@id/textColorDifficultyFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
         <action
-            android:id="@+id/action_mainMenuFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            android:id="@+id/action_mainMenuFragment_to_menuScoreFragment"
+            app:destination="@id/menuScoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/simonColorHardFragment"
@@ -141,5 +140,17 @@
             android:id="@+id/action_simonColorEasyFragment_to_gameOverviewFragment"
             app:destination="@id/gameOverviewFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuScoreFragment"
+        android:name="com.example.semestralnapraca_skvarna.fragment.MenuScoreFragment"
+        android:label="fragment_menu_score"
+        tools:layout="@layout/fragment_menu_score" >
+        <action
+            android:id="@+id/action_menuScoreFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+        <action
+            android:id="@+id/action_menuScoreFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
 </navigation>

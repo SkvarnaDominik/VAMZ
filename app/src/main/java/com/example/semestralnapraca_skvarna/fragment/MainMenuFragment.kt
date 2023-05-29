@@ -68,7 +68,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
 
     private fun setOnClickScore () { //ClickListener pre stlačenie tlačidla
         binding.btnScore.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_scoreFragment) //Navigovanie sa na fragment ScoreFragment
+            Navigation.findNavController(binding.root).navigate(R.id.action_mainMenuFragment_to_menuScoreFragment) //Navigovanie sa na fragment ScoreMenuFragment
         }
     }
 

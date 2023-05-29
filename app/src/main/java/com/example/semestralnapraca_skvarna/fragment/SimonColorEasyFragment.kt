@@ -41,6 +41,8 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tvScore.text = sharedViewModel.getScore().toString() //Výpis skóre do textView tvScore
+
         if (sharedViewModel.getIsFirstRound()) { //Podmienka pre zistenie či sa jedná o prvé kolo
             viewModel.pickRandomColorButton("Easy") //Metóda pre výber náhodného tlačidla
             coroutineScope.launch { //Spustenie metódy v inom vlákne ako beží hlavný kód
@@ -136,6 +138,9 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
+            sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
+            sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
             Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
     }
