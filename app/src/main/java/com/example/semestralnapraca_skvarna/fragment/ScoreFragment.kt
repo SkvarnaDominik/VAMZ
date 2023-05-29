@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.databinding.FragmentScoreBinding
 import com.example.semestralnapraca_skvarna.recycleview.ScoreAdapter
 import com.example.semestralnapraca_skvarna.view_model.GameRecordViewModel
+import com.example.semestralnapraca_skvarna.view_model.SharedViewModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -21,6 +23,7 @@ class ScoreFragment : Fragment(R.layout.game_record) {
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layout-u (TextView, Button, ImageView)
     private lateinit var viewModel: GameRecordViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
+    private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     private lateinit var adapter : ScoreAdapter //Slúži na spracovanie dát tak, aby s nimi mohol ďalej precovať recyclerView
 
@@ -49,9 +52,15 @@ class ScoreFragment : Fragment(R.layout.game_record) {
 
         setOnClickBackToMenu() //ClickListener pre stlačenie tlačidla
 
-        //viewModel.removeAllData() //Vymazanie všetkých záznamov z Room databázy
-        viewModel.getAllData.observe(viewLifecycleOwner) { gameRecord -> //Načítanie všetkých záznamov z Room databázy
-            adapter.setGameRecordData(gameRecord) //Posielanie dát adaptéru recyclerView, ktorý si ich pridá do zoznamu na ich následné zobrazenie v recyclerView
+        if (sharedViewModel.getScoreType() == "Local") {
+            //viewModel.removeAllData() //Vymazanie všetkých záznamov z Room databázy
+            viewModel.getAllData.observe(viewLifecycleOwner) { gameRecord -> //Načítanie všetkých záznamov z Room databázy
+                adapter.setGameRecordData(gameRecord) //Posielanie dát adaptéru recyclerView, ktorý si ich pridá do zoznamu na ich následné zobrazenie v recyclerView
+            }
+        }
+
+        else if (sharedViewModel.getScoreType() == "Online") {
+
         }
     }
 

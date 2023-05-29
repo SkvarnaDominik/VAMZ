@@ -53,6 +53,14 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         score = 0
     }
 
+    private var scoreType: String = ""
+    fun getScoreType(): String {
+        return scoreType
+    }
+    fun setScoreType(pScoreType: String) {
+        scoreType = pScoreType
+    }
+
     private val profilePictureResources: IntArray = intArrayOf(
         R.drawable.profile_1,
         R.drawable.profile_2,
