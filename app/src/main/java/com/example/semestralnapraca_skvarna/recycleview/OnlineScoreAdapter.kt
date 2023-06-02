@@ -1,7 +1,6 @@
 package com.example.semestralnapraca_skvarna.recycleview
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.semestralnapraca_skvarna.R
 import com.example.semestralnapraca_skvarna.database.GameRecord
 
-class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
+class OnlineScoreAdapter(private val gameRecords: ArrayList<GameRecord>) : RecyclerView.Adapter<OnlineScoreAdapter.GameRecordViewHolder>() {
 
     private val profilePictureResources: IntArray = intArrayOf( //Pole profilových obrázkov
         R.drawable.profile_1,
@@ -19,8 +18,6 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
         R.drawable.profile_3,
         R.drawable.profile_4
     )
-
-    private var gameRecordList = listOf<GameRecord>() //List záznamov o hrách (GameRecord)
 
     class GameRecordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val profilePicture : ImageView = itemView.findViewById(R.id.ivProfilePicture) //Priradenie textView a imageView premenným
@@ -35,11 +32,12 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return gameRecordList.size //Vrátenie veľkosti listu
+        return gameRecords.size //Vrátenie veľkosti listu
     }
 
     override fun onBindViewHolder(holder: GameRecordViewHolder, position: Int) {
-        val currentItem = gameRecordList[position]
+        val currentItem = gameRecords[position]
+
         holder.profilePicture.setImageResource(profilePictureResources[currentItem.profilePicture]) //Nastavenie premenných
         holder.profilePicture.layoutParams.height = 300
         holder.profilePicture.layoutParams.width = 300
@@ -47,11 +45,5 @@ class ScoreAdapter: RecyclerView.Adapter<ScoreAdapter.GameRecordViewHolder>() {
         holder.game.text = currentItem.game
         holder.gameDifficulty.text = currentItem.gameDifficulty
         holder.score.text = currentItem.score.toString()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setGameRecordData(gameRecord: List<GameRecord>) {
-        this.gameRecordList = gameRecord
-        notifyDataSetChanged()
     }
 }

@@ -72,7 +72,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
         val gameRecord = GameRecord(0, profilePicture, username, game, gameDifficulty, score) //Vytvorenie premennej záznamu hry (GameRecord) s danými vlastnosťami
 
-        firebaseDatabaseReference.child("gameRecord").child(username).setValue(gameRecord) //Pridanie záznamu (GameRecord) do Firebase databázy do "podpriečinka" gameRecord
+        firebaseDatabaseReference.child("gameRecord").child(username).push().setValue(gameRecord) //Pridanie záznamu (GameRecord) do Firebase databázy do "podpriečinka" gameRecord
                                                                                                     // do priečinka s názvom meno používateľa
     }
 
