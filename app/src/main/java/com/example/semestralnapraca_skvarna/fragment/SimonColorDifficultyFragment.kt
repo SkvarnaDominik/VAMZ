@@ -41,8 +41,16 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
     }
 
     private fun playSoundButton() {
-        if(!this::mediaPlayer.isInitialized)
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
+    private fun playSoundToast() {
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.toast) //Mediaplayer pre prehratie zvukov
         if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
             mediaPlayer.pause() //zastavenie zvuku
             mediaPlayer.seekTo(0) //pretocenie na zaciatok
@@ -77,8 +85,11 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
                 sharedViewModel.setIsFirstRound(true) //Nastavenie flag-u či sa jedná o prvé kolo na pravdu
                 Navigation.findNavController(binding.root).navigate(R.id.action_simonColorDifficultyFragment_to_countDownFragment) //Navigovanie sa na fragment CountDownFragment
             }
-            else
-                Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
+           else {
+                playSoundToast() //prehranie zvuku
+                Toast.makeText(activity, "Choose game difficulty", Toast.LENGTH_SHORT)
+                    .show() //Výpis krátkej správy na obrazovku
+            }
         }
     }
 

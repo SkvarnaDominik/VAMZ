@@ -1,13 +1,11 @@
 package com.example.semestralnapraca_skvarna.fragment
 
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -48,6 +46,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        playSoundGameOver()
 
         setOnClickBackToMenu() //ClickListener pre stlačenie tlačidla
         addGameRecordToRoomDatabase() //Metóda pre zápis záznamu o odohranej hre (GameRecord) do Room databázy

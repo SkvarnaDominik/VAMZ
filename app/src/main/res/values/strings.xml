@@ -20,8 +20,9 @@
     <string name="time">Time</string>
     <string name="mode">Color/Text</string>
     <string name="text">Text</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="online_score">Online Score</string>
     <string name="local_score">Local Score</string>
+    <string name="simon_color_rules">\t Game starts by randomly choosing one color button and displaying sequence. Player have to repeat this sequence by pressing the chosen button.\n\n\t Next round another color button will be added to this sequence and so on.\n\n\t Player must input the correct button sequence each round.\n\n\t Game ends when the player makes mistake.</string>
+    <string name="rules">Rules</string>
+    <string name="text_color_rules">Every round a player will be given command on what button to press. Command consists of 2 things:\n1. Text/Color – text means, that player is looking for a text inside of a button.\n                         – color means, that players is looking for a color of a button.\n2. Color- it represents color of the text or button that was chosen. \n\nPlayer must find and press correct button before time runs out.\n\nGame ends when player chooses wrong button, or his time runs out.</string>
 </resources>

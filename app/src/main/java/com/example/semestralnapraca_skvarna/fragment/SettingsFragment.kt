@@ -46,8 +46,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     }
 
     private fun playSoundButton() {
-        if(!this::mediaPlayer.isInitialized)
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
+    private fun playSoundToast() {
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.toast) //Mediaplayer pre prehratie zvukov
         if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
             mediaPlayer.pause() //zastavenie zvuku
             mediaPlayer.seekTo(0) //pretocenie na zaciatok
@@ -65,11 +73,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private fun changeUserName() { //Metóda pre zmenu mena používateľa
         binding.btnChangeUserName.setOnClickListener() {
             if (binding.etUserName.text.toString().length > 10) { //Podmienka pre dĺžku mena použivateľa
-                playSoundButton() //prehratie zvuku
+                playSoundToast() //prehratie zvuku
                 Toast.makeText(activity, "Username cannot be longer than 10 characters", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             }
             else if (binding.etUserName.text.toString().isEmpty()) { //Podmienka pre dĺžku mena použivateľa
-                playSoundButton() //prehratie zvuku
+                playSoundToast() //prehratie zvuku
                 Toast.makeText(activity, "Username cannot be empty", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             }
             else {
@@ -87,8 +95,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             sharedViewModel.setIndexOfProfilePicture(sharedViewModel.getIndexOfProfilePicture() + 1) //Nastavenie profilovej fotografie používateľa v zdieľanom viewModel-y
             if (sharedViewModel.getIndexOfProfilePicture() == sharedViewModel.getProfilePictureResources().size) //Podmienka pre zistenie konca poľa
                 sharedViewModel.setIndexOfProfilePicture(0) //Nastavenie indexu na 0
-                binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()]) //Výpis fotografie do imageView ivProfilePicture
-                Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
+            binding.ivProfilePicture.setImageResource(sharedViewModel.getProfilePictureResources()[sharedViewModel.getIndexOfProfilePicture()]) //Výpis fotografie do imageView ivProfilePicture
+            Toast.makeText(activity, "Profile picture was changed", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
         }
     }
 

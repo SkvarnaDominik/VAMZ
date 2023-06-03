@@ -40,8 +40,16 @@ class MenuScoreFragment :  Fragment(R.layout.fragment_menu_score) {
     }
 
     private fun playSoundButton() {
-        if(!this::mediaPlayer.isInitialized)
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
+    private fun playSoundToast() {
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.toast) //Mediaplayer pre prehratie zvukov
         if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
             mediaPlayer.pause() //zastavenie zvuku
             mediaPlayer.seekTo(0) //pretocenie na zaciatok
@@ -57,10 +65,12 @@ class MenuScoreFragment :  Fragment(R.layout.fragment_menu_score) {
         }
     }
 
+
+    //Táto funkcionalita nie je naimplementovaná. Môže slúžiť pre zlepšenie dojmu a funkcionality aplikácie.
     private fun setOnClickOnlineScore() { //ClickListener pre stlačenie tlačidla
         binding.btnOnlineScore.setOnClickListener() {
-            playSoundButton() //prehratie zvuku
-            Toast.makeText(activity, "Work on progress...", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
+            playSoundToast() //prehratie zvuku
+            Toast.makeText(activity, "To be added...", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             sharedViewModel.setScoreType("Online")
             //Navigation.findNavController(binding.root).navigate(R.id.action_menuScoreFragment_to_scoreFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gameRecordLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".fragment.ScoreFragment"
-    android:background="@drawable/score">
+    android:layout_height="120dp"
+    android:background="@drawable/score"
+    tools:context=".fragment.ScoreFragment">
 
     <ImageView
         android:id="@+id/ivProfilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -22,7 +22,7 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicture"
@@ -41,7 +41,7 @@
         android:id="@+id/tvGameDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/tvGame"
         app:layout_constraintStart_toEndOf="@+id/tvGame" />
@@ -50,7 +50,7 @@
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="50dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/tvGameDifficulty"
         app:layout_constraintStart_toEndOf="@+id/tvGameDifficulty" />
