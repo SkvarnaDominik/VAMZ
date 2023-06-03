@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:text="@string/username"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicture"
         app:layout_constraintTop_toTopOf="@+id/ivProfilePicture" />
 
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="TextView"
+        android:text="@string/game"
         app:layout_constraintStart_toStartOf="@+id/tvUsername"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:text="TextView"
+        android:text="@string/difficulty"
         app:layout_constraintBottom_toBottomOf="@+id/tvGame"
         app:layout_constraintStart_toEndOf="@+id/tvGame" />
 
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:text="TextView"
+        android:text="@string/score"
         app:layout_constraintBottom_toBottomOf="@+id/tvGameDifficulty"
         app:layout_constraintStart_toEndOf="@+id/tvGameDifficulty" />
 

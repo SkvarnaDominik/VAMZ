@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_blue">
 
     <Button
         android:id="@+id/btnYellow"
@@ -99,7 +100,7 @@
         android:layout_marginTop="88dp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
-        android:text="0"
+        android:text="@string/_0"
         app:layout_constraintEnd_toEndOf="@+id/tvSecondsTitle"
         app:layout_constraintStart_toStartOf="@+id/tvSecondsTitle"
         app:layout_constraintTop_toTopOf="parent" />

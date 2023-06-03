@@ -25,7 +25,7 @@ class SharedViewModel : ViewModel() { //Trieda, ktorá pracuje s dátami a sprí
         game.value = pGame
     }
 
-    private var difficulty = MutableLiveData("Easy")
+    private var difficulty = MutableLiveData("None")
     fun getDifficulty(): String {
         return difficulty.value!!
     }

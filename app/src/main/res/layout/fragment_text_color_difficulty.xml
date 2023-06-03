@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blue2">
@@ -62,7 +61,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_dark_blue"
-        android:text="Easy"
+        android:text="@string/easy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivEasy" />
 
@@ -72,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:background="@drawable/btn_red"
-        android:text="Hard"
+        android:text="@string/hard"
         app:layout_constraintBottom_toBottomOf="@+id/btnEasy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnEasy" />
@@ -83,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:background="@drawable/btn_green"
-        android:text="Start"
+        android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/btnHard" />
 

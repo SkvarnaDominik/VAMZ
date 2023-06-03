@@ -15,6 +15,7 @@
         android:layout_marginStart="80dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/local_score"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/btnOnlineScore"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -25,6 +26,7 @@
         android:layout_marginEnd="80dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/online_score"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

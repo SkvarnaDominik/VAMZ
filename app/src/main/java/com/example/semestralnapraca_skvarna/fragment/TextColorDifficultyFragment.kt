@@ -33,6 +33,11 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (sharedViewModel.getDifficulty() == "Easy")
+            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
+        if (sharedViewModel.getDifficulty() == "Hard")
+            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
+
         setOnClickEasy() //ClickListener pre stlačenie tlačidla
         setOnClickHard()
         setOnClickStart()
@@ -97,6 +102,7 @@ class TextColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diffi
             playSoundButton() //prehranie zvuku
             sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
             sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
+            sharedViewModel.setDifficulty("None")
             sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
             Navigation.findNavController(binding.root).navigate(R.id.action_textColorDifficultyFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainManuFragment
         }

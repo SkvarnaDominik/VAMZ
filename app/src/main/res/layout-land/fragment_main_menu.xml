@@ -16,6 +16,7 @@
         android:layout_marginEnd="100dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/score"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/btnSimonColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSimonColor" />
@@ -27,6 +28,7 @@
         android:layout_marginTop="150dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/simon_color"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +41,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/settings"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/btnScore"
         app:layout_constraintTop_toBottomOf="@+id/btnScore" />
 
@@ -49,6 +52,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/btn_dark_blue"
         android:text="@string/text_color"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/btnSimonColor"
         app:layout_constraintTop_toBottomOf="@+id/btnSimonColor" />
 
