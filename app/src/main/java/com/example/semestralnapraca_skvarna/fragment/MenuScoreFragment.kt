@@ -1,10 +1,12 @@
 package com.example.semestralnapraca_skvarna.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.semestralnapraca_skvarna.R
@@ -16,6 +18,8 @@ class MenuScoreFragment :  Fragment(R.layout.fragment_menu_score) {
     private var _binding: FragmentMenuScoreBinding? = null
     private val binding get() = _binding!! //Slúži pre ľahsie pristupovanie k častiam layoutu (TextView, Button, ImageView)
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
+
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +39,19 @@ class MenuScoreFragment :  Fragment(R.layout.fragment_menu_score) {
         setOnClickBackToMenu()
     }
 
+    private fun playSoundButton() {
+        if(!this::mediaPlayer.isInitialized)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
     private fun setOnClickLocalScore() { //ClickListener pre stlačenie tlačidla
         binding.btnLocalScore.setOnClickListener() {
+            playSoundButton() //prehratie zvuku
             sharedViewModel.setScoreType("Local")
             Navigation.findNavController(binding.root).navigate(R.id.action_menuScoreFragment_to_scoreFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
@@ -44,14 +59,17 @@ class MenuScoreFragment :  Fragment(R.layout.fragment_menu_score) {
 
     private fun setOnClickOnlineScore() { //ClickListener pre stlačenie tlačidla
         binding.btnOnlineScore.setOnClickListener() {
+            playSoundButton() //prehratie zvuku
+            Toast.makeText(activity, "Work on progress...", Toast.LENGTH_SHORT).show() //Výpis krátkej správy na obrazovku
             sharedViewModel.setScoreType("Online")
-            Navigation.findNavController(binding.root).navigate(R.id.action_menuScoreFragment_to_scoreFragment) //Navigovanie sa do fragmentu MainMenuFragment
+            //Navigation.findNavController(binding.root).navigate(R.id.action_menuScoreFragment_to_scoreFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
     }
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnMainMenu.setOnClickListener() {
-            Navigation.findNavController(binding.root).navigate(R.id.action_simonColorEasyFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
+            playSoundButton() //prehratie zvuku
+            Navigation.findNavController(binding.root).navigate(R.id.action_menuScoreFragment_to_mainMenuFragment) //Navigovanie sa do fragmentu MainMenuFragment
         }
     }
 }

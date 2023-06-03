@@ -1,6 +1,7 @@
 package com.example.semestralnapraca_skvarna.fragment
 
 import android.content.res.Configuration
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,9 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
     private lateinit var viewModel: CountDownViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
 
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
+
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,8 +46,19 @@ class CountDownFragment : Fragment(R.layout.fragment_count_down) {
 
     }
 
+    private fun playSoundClock() {
+        if(!this::mediaPlayer.isInitialized)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.clock) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
     private fun displaySeconds() {
         viewModel.getSeconds().observe(viewLifecycleOwner, Observer { //Observer sleduje liveData. Pokiaľ sa dáta zmenia vykoná svoje telo
+            playSoundClock() //prehranie zvuku
             if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) { // Zisťovanie orientácie zariadenia: Portrait/Landscape
                 when (it) {
                     2 -> binding.root.setBackgroundResource(R.drawable.green3) //Prepínanie pozadia Fragmentu podľa odrátaných sekúnd

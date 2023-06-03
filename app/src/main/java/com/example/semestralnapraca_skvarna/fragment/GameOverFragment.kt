@@ -1,10 +1,13 @@
 package com.example.semestralnapraca_skvarna.fragment
 
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -27,6 +30,8 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
     private lateinit var firebaseDatabaseReference: DatabaseReference //Referencia na firebase databázu, do ktorej sa zálohujú záznamy (GameRecord) o odohraných hrách
 
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +53,24 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
         addGameRecordToRoomDatabase() //Metóda pre zápis záznamu o odohranej hre (GameRecord) do Room databázy
         addGameRecordToFirebase() //Metóda pre zápis záznamu o odohranej hre (GameRecord) do Firebase databázy
         binding.tvScore.text = sharedViewModel.getScore().toString() //Výpis skóre do textView tvScore
+    }
+
+    private fun playSoundButton() {
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
+    }
+
+    private fun playSoundGameOver() {
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.gameover) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
     }
 
     private fun addGameRecordToRoomDatabase() { //Metóda pre zápis záznamu o odohranej hre (GameRecord) do Room databázy
@@ -78,6 +101,7 @@ class GameOverFragment : Fragment(R.layout.fragment_game_over) {
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            playSoundButton() //prehratie zvuku
             sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
             sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
             sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu

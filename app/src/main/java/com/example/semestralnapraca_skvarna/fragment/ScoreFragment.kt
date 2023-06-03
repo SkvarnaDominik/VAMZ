@@ -1,5 +1,6 @@
 package com.example.semestralnapraca_skvarna.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +37,8 @@ class ScoreFragment : Fragment(R.layout.game_record) {
     private lateinit var firebaseDatabaseReference: DatabaseReference //Referencia na firebase databázu, do ktorej sa zálohujú záznamy (GameRecord) o odohraných hrách
     private lateinit var firebaseDatabase: FirebaseDatabase //Inštancia firebase databázy pre prístup k jej obsahu a jeho získaniu
 
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +62,16 @@ class ScoreFragment : Fragment(R.layout.game_record) {
         setOnClickBackToMenu() //ClickListener pre stlačenie tlačidla
         getData()
 
+    }
+
+    private fun playSoundButton() {
+        if(!this::mediaPlayer.isInitialized)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
     }
 
     private fun getData() {
@@ -96,6 +109,7 @@ class ScoreFragment : Fragment(R.layout.game_record) {
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            playSoundButton() //prehratie zvuku
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_scoreFragment_to_mainMenuFragment) //Navigovanie sa na fragment MainMenuFragment
         }

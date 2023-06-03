@@ -1,6 +1,7 @@
 package com.example.semestralnapraca_skvarna.fragment
 
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,8 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
     private lateinit var viewModel: TextColorViewModel //Slúži na pracovanie s dátami. Tie oddeľuje od fragmentu, ktorý by mal spracovať iba veci, ktoré sa týkajú UI
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
+
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +56,16 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
         displaySeconds() //Zobrazenie sekúnd
         isFinished() //Kontrola skončenia Timer-u
         roundSetup() //Metóda pre nastavenie daného kola
+    }
+
+    private fun playSoundButton() {
+        if(!this::mediaPlayer.isInitialized)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
     }
 
     private fun timerSetup() { //Metóda pre výber dĺžky Timer-u
@@ -164,30 +177,35 @@ class TextColorFragment : Fragment(R.layout.fragment_text_color) {
 
    private fun setOnClickBtnYellow() { //ClickListener pre stlačenie tlačidla
         binding.btnYellow.setOnClickListener() {
-           game(0 ) //Poslanie číselnej reprezentácie tlačidla do metódy game
+            playSoundButton() //prehranie zvuku
+            game(0 ) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnBlue() { //ClickListener pre stlačenie tlačidla
         binding.btnBlue.setOnClickListener() {
-           game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
+            playSoundButton() //prehranie zvuku
+            game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnRed() { //ClickListener pre stlačenie tlačidla
         binding.btnRed.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             game(2) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnGreen() { //ClickListener pre stlačenie tlačidla
         binding.btnGreen.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             game(3) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
             sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
             sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu

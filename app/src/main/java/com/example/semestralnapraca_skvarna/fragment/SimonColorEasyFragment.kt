@@ -1,5 +1,6 @@
 package com.example.semestralnapraca_skvarna.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +27,8 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
     private val sharedViewModel: SharedViewModel by activityViewModels() //Zdieľaný viewModel medzi viacerými fragmentmi
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO) //Korutina pre spustenie danej metódy v ďalšom vlákne mimo behu hlavného kódu
+
+    private lateinit var mediaPlayer : MediaPlayer //MediaPlayer pre prehratie zvukov
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +59,16 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
         setOnClickBackToMenu()
 
         sharedViewModel.setIsFirstRound(false) //Nastavenie flag-u či bola vybraná obtiažnosť na nepravdu
+    }
+
+    private fun playSoundButton() {
+        if(!this::mediaPlayer.isInitialized)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.button) //Mediaplayer pre prehratie zvukov
+        if (mediaPlayer.isPlaying) { //ak sa zvuk prehrava
+            mediaPlayer.pause() //zastavenie zvuku
+            mediaPlayer.seekTo(0) //pretocenie na zaciatok
+        }
+        mediaPlayer.start() //zapnutie prehravania
     }
 
     private fun game(pColorButtonNumber:Int) { //Metóda logiky hry
@@ -91,7 +104,9 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
         binding.btnRed.isClickable = false //Znemožnenie stlačenie tlačidla, kým sa zobrazuje postupnosť tlačidiel
         binding.btnBlue.isClickable = false
         binding.btnGreen.isClickable = false
+
         for (index in 0 until viewModel.getGameSequence().size) {
+            playSoundButton()
             when (viewModel.getGameSequence()[index]) { //switch pre vybrané tlačidla
                 0 -> {
                     delay(250)
@@ -112,6 +127,8 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
                     binding.btnGreen.setBackgroundResource(R.drawable.btn_green)
                 }
             }
+            if (index != 0)
+                playSoundButton()
         }
         binding.btnRed.isClickable = true //Opätovné sfunkčnenie stlačnia tlačidla
         binding.btnBlue.isClickable = true
@@ -120,24 +137,28 @@ class SimonColorEasyFragment : Fragment(R.layout.fragment_simon_color_easy) {
 
     private fun setOnClickBtnBlue() { //ClickListener pre stlačenie tlačidla
         binding.btnRed.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             game(0) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnRed() { //ClickListener pre stlačenie tlačidla
         binding.btnBlue.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             game(1) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBtnGreen() { //ClickListener pre stlačenie tlačidla
         binding.btnGreen.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             game(2) //Poslanie číselnej reprezentácie tlačidla do metódy game
         }
     }
 
     private fun setOnClickBackToMenu() { //ClickListener pre stlačenie tlačidla
         binding.btnBackToMenu.setOnClickListener() {
+            playSoundButton() //prehranie zvuku
             sharedViewModel.resetScore() //Resetovanie skóre po odohraní a zapísaní hry do databáz
             sharedViewModel.setIsDifficultyChosen(false) //Resetovanie výberu odbtiažnosti
             sharedViewModel.setIsFirstRound(false) //Nastavenie Flag-u či sa jedná o prvé kolo na nepravdu
