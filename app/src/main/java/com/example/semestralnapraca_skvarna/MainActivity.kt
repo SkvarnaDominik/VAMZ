@@ -17,4 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root) //Nastavenie contentView na binding.root (activity_main.xml)
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() { //zabezpecenie, ze po kliknuti na tlacidlo spat, sa nic nestane
+
+    }
 }

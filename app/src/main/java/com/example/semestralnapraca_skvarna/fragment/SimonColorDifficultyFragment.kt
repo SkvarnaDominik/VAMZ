@@ -34,10 +34,9 @@ class SimonColorDifficultyFragment : Fragment(R.layout.fragment_simon_color_diff
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (sharedViewModel.getDifficulty() == "Easy")
-            binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
-        if (sharedViewModel.getDifficulty() == "Hard")
-            binding.btnHard.setBackgroundResource(R.drawable.btn_red_pressed) //Zmena pozadia tlačidla poďľa vybranej obtiažnosti
+        sharedViewModel.setDifficulty("None") //Nastavenie obtiaznosti
+        binding.btnEasy.setBackgroundResource(R.drawable.btn_dark_blue) //Zmena pozadia tlačidla
+        binding.btnHard.setBackgroundResource(R.drawable.btn_red) //Zmena pozadia tlačidla
 
         setOnClickEasy() //ClickListener pre stlačenie tlačidla
         setOnClickHard()
