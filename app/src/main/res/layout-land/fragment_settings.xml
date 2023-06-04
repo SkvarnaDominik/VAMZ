@@ -7,31 +7,6 @@
     tools:context=".fragment.SettingsFragment"
     android:background="@drawable/dark_blue">
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swSound"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:checked="true"
-        android:text="@string/sound"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swDarkMode"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:checked="true"
-        android:text="@string/darkmode"
-        app:layout_constraintEnd_toEndOf="@+id/swSound"
-        app:layout_constraintStart_toStartOf="@+id/swSound"
-        app:layout_constraintTop_toBottomOf="@+id/swSound" />
-
     <TextView
         android:id="@+id/tvMenoNadpis"
         android:layout_width="150dp"
@@ -54,7 +29,8 @@
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile_1" />
+        app:srcCompat="@drawable/profile_1"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -88,6 +64,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="text"
+        android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
