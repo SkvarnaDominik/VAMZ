@@ -16,7 +16,7 @@
     <string name="final_score">Final score</string>
     <string name="score">Score</string>
     <string name="username_placeholder">**********</string>
-    <string name="click">Click the image to change it</string>
+    <string name="click">Click on the image to change it</string>
     <string name="time">Time</string>
     <string name="mode">Color/Text</string>
     <string name="text">Text</string>
@@ -27,4 +27,5 @@
     <string name="text_color_rules">Every round a player will be given command on what button to press. Command consists of 2 things:\n1. Text/Color – text means, that player is looking for a text inside of a button.\n                         – color means, that players is looking for a color of a button.\n2. Color- it represents color of the text or button that was chosen. \n\nPlayer must find and press correct button before time runs out.\n\nGame ends when player chooses wrong button, or his time runs out.</string>
     <string name="difficulty">Difficulty</string>
     <string name="game">Game</string>
+    <string name="type_here">Type here…</string>
 </resources>
